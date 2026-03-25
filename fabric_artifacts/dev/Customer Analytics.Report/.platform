@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Customer Analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4cd3c9b6-bb1c-bd09-4f78-e9a975aaed96"
+  }
+}
