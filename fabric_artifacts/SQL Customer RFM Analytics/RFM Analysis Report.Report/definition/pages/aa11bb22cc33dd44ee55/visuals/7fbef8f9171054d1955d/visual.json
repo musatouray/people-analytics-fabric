@@ -3,9 +3,9 @@
   "name": "7fbef8f9171054d1955d",
   "position": {
     "x": 99.57151711083938,
-    "y": 815.0970703026851,
+    "y": 578.90416924906617,
     "z": 9001,
-    "height": 149.35727566625906,
+    "height": 385.55017671987804,
     "width": 1089.4976465267425,
     "tabOrder": 9001
   },
@@ -20,7 +20,6 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Schema": "extension",
                       "Entity": "Metrics"
                     }
                   },
@@ -32,6 +31,24 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Metrics"
+                  }
+                },
+                "Property": "HTML Card Total Orders"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "drillFilterOtherVisuals": true
@@ -39,12 +56,11 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "68f7ac9366952aa69ab3",
+        "name": "b6f69bec384e82ca7800",
         "field": {
           "Measure": {
             "Expression": {
               "SourceRef": {
-                "Schema": "extension",
                 "Entity": "Metrics"
               }
             },
