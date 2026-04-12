@@ -57,6 +57,80 @@
           }
         ]
       }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F3F2F1"
+              }
+            }
+          }
+        ],
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F3F2F1"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "advancedSlicerVisual": {
+      "selected": {
+        "value": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#FF6600"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "slicer": {
+      "selected": {
+        "value": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#FF6600"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "listSlicer": {
+      "selected": {
+        "value": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#FF6600"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "textSlicer": {
+      "selected": {
+        "value": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#FF6600"
+              }
+            }
+          }
+        ]
+      }
     }
   }
 }

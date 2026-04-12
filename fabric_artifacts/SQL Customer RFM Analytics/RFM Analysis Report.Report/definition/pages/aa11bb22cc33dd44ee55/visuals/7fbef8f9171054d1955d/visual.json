@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "7fbef8f9171054d1955d",
+  "position": {
+    "x": 99.57151711083938,
+    "y": 815.0970703026851,
+    "z": 9001,
+    "height": 149.35727566625906,
+    "width": 1089.4976465267425,
+    "tabOrder": 9001
+  },
+  "visual": {
+    "visualType": "htmlContent443BE3AD55E043BF878BED274D3A6855",
+    "query": {
+      "queryState": {
+        "content": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "Metrics"
+                    }
+                  },
+                  "Property": "HTML Card Total Orders"
+                }
+              },
+              "queryRef": "Metrics.HTML Card Total Orders",
+              "nativeQueryRef": "HTML Card Total Orders"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "58f11f276d0e9760e710",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "Metrics"
+              }
+            },
+            "Property": "HTML Card Total Orders"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

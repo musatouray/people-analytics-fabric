@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd root-level CLAUDE.md for Claude Code guidance\n\nDocuments repository structure, Fabric development workflow, and project-specific guidance for the three main initiatives \\(RFM Analytics, People Analytics, Plotly\\).\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(pbir-cli:*)",
+      "Bash(claude plugin marketplace add:*)",
+      "Bash(pbir ls:*)",
+      "Bash(pbir pages background:*)",
+      "Bash(pbir theme colors:*)",
+      "Bash(pbir theme set-formatting:*)",
+      "Bash(pbir schema describe:*)",
+      "Bash(pbir cat \"RFM Analysis Report.Report/rfm_theme.Theme\")",
+      "Bash(pbir validate:*)",
+      "Bash(pbir find:*)",
+      "Bash(pbir schema containers advancedSlicerVisual:*)",
+      "Bash(pbir visuals properties:*)",
+      "Bash(pbir tree:*)",
+      "Bash(pbir visuals format:*)",
+      "Bash(pbir visuals format-state:*)",
+      "Bash(pbir publish --help:*)",
+      "Bash(pbir publish:*)",
+      "Bash(pip install:*)",
+      "Bash(pbir --help:*)"
+    ]
+  }
+}

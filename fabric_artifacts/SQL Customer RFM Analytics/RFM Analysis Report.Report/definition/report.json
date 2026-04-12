@@ -48,6 +48,9 @@
       }
     ]
   },
+  "publicCustomVisuals": [
+    "htmlContent443BE3AD55E043BF878BED274D3A6855"
+  ],
   "resourcePackages": [
     {
       "name": "SharedResources",
@@ -100,6 +103,11 @@
           "type": "Image"
         },
         {
+          "name": "rfm_theme.json",
+          "path": "rfm_theme.json",
+          "type": "CustomTheme"
+        },
+        {
           "name": "shopping_cart_light3312939664036727.svg",
           "path": "shopping_cart_light3312939664036727.svg",
           "type": "Image"
@@ -113,11 +121,6 @@
           "name": "warning_skeleton_light9478209283900223.svg",
           "path": "warning_skeleton_light9478209283900223.svg",
           "type": "Image"
-        },
-        {
-          "name": "rfm_theme.json",
-          "path": "rfm_theme.json",
-          "type": "CustomTheme"
         }
       ]
     }

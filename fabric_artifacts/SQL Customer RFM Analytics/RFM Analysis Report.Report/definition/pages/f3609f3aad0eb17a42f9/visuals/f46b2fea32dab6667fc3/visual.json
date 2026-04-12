@@ -698,7 +698,7 @@
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 6,
-                      "Percent": 0.0
+                      "Percent": 0
                     }
                   }
                 }
@@ -770,7 +770,7 @@
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 6,
-                      "Percent": 0.0
+                      "Percent": 0
                     }
                   }
                 }
@@ -830,7 +830,7 @@
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 6,
-                      "Percent": 0.0
+                      "Percent": 0
                     }
                   }
                 }
@@ -901,7 +901,7 @@
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 6,
-                      "Percent": 0.0
+                      "Percent": 0
                     }
                   }
                 }
