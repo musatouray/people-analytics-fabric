@@ -498,7 +498,7 @@ table Metrics
 			VAR _yoyChange = _current - _py
 			VAR _yoyPct = [Total Orders YOY %]
 			RETURN
-			    'HTML.KpiCard'(
+			    HTML.KpiCard(
 			        FORMAT(_current, "#,##0"),
 			        FORMAT(_py, "#,##0"),
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
@@ -520,7 +520,7 @@ table Metrics
 			VAR _yoyChange = _current - _py
 			VAR _yoyPct = [Total Revenue YOY %]
 			RETURN
-			    'HTML.KpiCard'(
+			    HTML.KpiCard(
 			        "$" & FORMAT(_current, "#,##0"),
 			        "$" & FORMAT(_py, "#,##0"),
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
@@ -542,7 +542,7 @@ table Metrics
 			VAR _yoyChange = _current - _py
 			VAR _yoyPct = [Total Profit YOY %]
 			RETURN
-			    'HTML.KpiCard'(
+			    HTML.KpiCard(
 			        "$" & FORMAT(_current, "#,##0"),
 			        "$" & FORMAT(_py, "#,##0"),
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
