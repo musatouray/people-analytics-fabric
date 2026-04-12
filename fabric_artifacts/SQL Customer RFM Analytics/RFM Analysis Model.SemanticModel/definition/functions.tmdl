@@ -1601,15 +1601,15 @@ function 'SVG.KpiCard' =
 /// @param {string} iconType – Icon type: "orders", "revenue", or "profit"
 /// @returns {string} Complete HTML5 document string
 /// ════════════════════════════════════════════════════════════════════════════
-function 'RFM.Web.KpiCard' =
+function 'HTML.KpiCard' =
 		(
-		    currentValueFmt: STRING,
-		    priorYearFmt: STRING,
-		    yoyPercentFmt: STRING,
-		    yoyChange: DOUBLE,
-		    subtitle: STRING,
-		    title: STRING,
-		    iconType: STRING
+		    currentValueFmt: STRING VAL,
+		    priorYearFmt: STRING VAL,
+		    yoyPercentFmt: STRING VAL,
+		    yoyChange: DOUBLE VAL,
+		    subtitle: STRING VAL,
+		    title: STRING VAL,
+		    iconType: STRING VAL
 		) =>
 		// ── RFM Theme Colors ─────────────────────────────────────────────────────
 		VAR _primaryColor = "#1d1f21"

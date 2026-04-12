@@ -491,14 +491,14 @@ table Metrics
 		lineageTag: 96c4cb32-d250-4524-8574-846103ed7295
 		dataCategory: ImageUrl
 
-	/// HTML KPI card for total orders using the semantic-model RFM.Web.KpiCard UDF.
+	/// HTML KPI card for total orders using the semantic-model HTML.KpiCard UDF.
 	measure 'HTML Card Total Orders' = ```
 			VAR _current = [Total Orders]
 			VAR _py = [Total Orders PY]
 			VAR _yoyChange = _current - _py
 			VAR _yoyPct = [Total Orders YOY %]
 			RETURN
-			    RFM.Web.KpiCard(
+			    HTML.KpiCard(
 			        FORMAT(_current, "#,##0"),
 			        FORMAT(_py, "#,##0"),
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
@@ -513,14 +513,14 @@ table Metrics
 		lineageTag: 29a9770f-a174-4d5b-9b98-bb2d2f3f78a0
 		dataCategory: WebUrl
 
-	/// HTML KPI card for total revenue using the semantic-model RFM.Web.KpiCard UDF.
+	/// HTML KPI card for total revenue using the semantic-model HTML.KpiCard UDF.
 	measure 'HTML Card Total Revenue' = ```
 			VAR _current = [Total Revenue]
 			VAR _py = [Total Revenue PY]
 			VAR _yoyChange = _current - _py
 			VAR _yoyPct = [Total Revenue YOY %]
 			RETURN
-			    RFM.Web.KpiCard(
+			    HTML.KpiCard(
 			        "$" & FORMAT(_current, "#,##0"),
 			        "$" & FORMAT(_py, "#,##0"),
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
@@ -535,14 +535,14 @@ table Metrics
 		lineageTag: 0ee92b22-7e05-45c0-8fc4-3f4c45c77fd0
 		dataCategory: WebUrl
 
-	/// HTML KPI card for total profit using the semantic-model RFM.Web.KpiCard UDF.
+	/// HTML KPI card for total profit using the semantic-model HTML.KpiCard UDF.
 	measure 'HTML Card Total Profit' = ```
 			VAR _current = [Total Profit]
 			VAR _py = [Total Profit PY]
 			VAR _yoyChange = _current - _py
 			VAR _yoyPct = [Total Profit YOY %]
 			RETURN
-			    RFM.Web.KpiCard(
+			    HTML.KpiCard(
 			        "$" & FORMAT(_current, "#,##0"),
 			        "$" & FORMAT(_py, "#,##0"),
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
