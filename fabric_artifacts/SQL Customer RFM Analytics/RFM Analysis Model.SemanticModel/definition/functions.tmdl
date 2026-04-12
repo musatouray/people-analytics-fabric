@@ -1267,6 +1267,7 @@ function 'PowerofBI.IBCS.Waterfall.Vertical' =
 		RETURN
 		    IF ( rowSignColumn IN { "+", "-", "=" }, _SVG )
 	lineageTag: 79a84bb8-3780-4114-9ab4-05f75923dada
+
 /// ════════════════════════════════════════════════════════════════════════════
 /// SVG KPI Card Library - Following DaxLib.SVG patterns
 /// ════════════════════════════════════════════════════════════════════════════
@@ -1278,18 +1279,20 @@ function 'PowerofBI.IBCS.Waterfall.Vertical' =
 /// @param {double} [opacity] – Overall opacity (0-1). Omitted if not specified
 /// @returns {string} Attribute string for SVG elements
 function 'SVG.Attr.Shapes' =
-    (
-        fill: STRING,
-        fillOpacity: DOUBLE,
-        stroke: STRING,
-        strokeWidth: INT64,
-        opacity: DOUBLE
-    ) =>
-    IF(NOT ISBLANK(fill), "fill='" & fill & "' ") &
-    IF(NOT ISBLANK(fillOpacity), "fill-opacity='" & fillOpacity & "' ") &
-    IF(NOT ISBLANK(stroke), "stroke='" & stroke & "' ") &
-    IF(NOT ISBLANK(strokeWidth), "stroke-width='" & strokeWidth & "' ") &
-    IF(NOT ISBLANK(opacity), "opacity='" & opacity & "' ")
+		(
+		    fill: STRING,
+		    fillOpacity: DOUBLE,
+		    stroke: STRING,
+		    strokeWidth: INT64,
+		    opacity: DOUBLE
+		) =>
+		IF(NOT ISBLANK(fill), "fill='" & fill & "' ") &
+		IF(NOT ISBLANK(fillOpacity), "fill-opacity='" & fillOpacity & "' ") &
+		IF(NOT ISBLANK(stroke), "stroke='" & stroke & "' ") &
+		IF(NOT ISBLANK(strokeWidth), "stroke-width='" & strokeWidth & "' ") &
+		IF(NOT ISBLANK(opacity), "opacity='" & opacity & "' ")
+	lineageTag: e3857a4e-865b-4161-82c4-1f37d068f6a4
+
 /// Generates text attributes (font, anchor, baseline)
 /// @param {string} [fontFamily] – Font family. Omitted if not specified
 /// @param {int} [fontSize] – Font size. Omitted if not specified
@@ -1298,32 +1301,36 @@ function 'SVG.Attr.Shapes' =
 /// @param {string} [baseline] – Dominant baseline. Omitted if not specified
 /// @returns {string} Attribute string for SVG text elements
 function 'SVG.Attr.Txt' =
-    (
-        fontFamily: STRING,
-        fontSize: INT64,
-        fontWeight: STRING,
-        textAnchor: STRING,
-        baseline: STRING
-    ) =>
-    IF(NOT ISBLANK(fontFamily), "font-family='" & fontFamily & "' ") &
-    IF(NOT ISBLANK(fontSize), "font-size='" & fontSize & "' ") &
-    IF(NOT ISBLANK(fontWeight), "font-weight='" & fontWeight & "' ") &
-    IF(NOT ISBLANK(textAnchor), "text-anchor='" & textAnchor & "' ") &
-    IF(NOT ISBLANK(baseline), "dominant-baseline='" & baseline & "' ")
+		(
+		    fontFamily: STRING,
+		    fontSize: INT64,
+		    fontWeight: STRING,
+		    textAnchor: STRING,
+		    baseline: STRING
+		) =>
+		IF(NOT ISBLANK(fontFamily), "font-family='" & fontFamily & "' ") &
+		IF(NOT ISBLANK(fontSize), "font-size='" & fontSize & "' ") &
+		IF(NOT ISBLANK(fontWeight), "font-weight='" & fontWeight & "' ") &
+		IF(NOT ISBLANK(textAnchor), "text-anchor='" & textAnchor & "' ") &
+		IF(NOT ISBLANK(baseline), "dominant-baseline='" & baseline & "' ")
+	lineageTag: 264b7b77-697a-48c3-b504-31b36ab1afaf
+
 /// Generates stroke attributes including dash patterns
 /// @param {string} [stroke] – Stroke color. Omitted if not specified
 /// @param {int} [strokeWidth] – Stroke width. Omitted if not specified
 /// @param {string} [strokeDasharray] – Dash pattern (e.g., "4,3"). Omitted if not specified
 /// @returns {string} Attribute string for SVG elements
 function 'SVG.Attr.Stroke' =
-    (
-        stroke: STRING,
-        strokeWidth: INT64,
-        strokeDasharray: STRING
-    ) =>
-    IF(NOT ISBLANK(stroke), "stroke='" & stroke & "' ") &
-    IF(NOT ISBLANK(strokeWidth), "stroke-width='" & strokeWidth & "' ") &
-    IF(NOT ISBLANK(strokeDasharray), "stroke-dasharray='" & strokeDasharray & "' ")
+		(
+		    stroke: STRING,
+		    strokeWidth: INT64,
+		    strokeDasharray: STRING
+		) =>
+		IF(NOT ISBLANK(stroke), "stroke='" & stroke & "' ") &
+		IF(NOT ISBLANK(strokeWidth), "stroke-width='" & strokeWidth & "' ") &
+		IF(NOT ISBLANK(strokeDasharray), "stroke-dasharray='" & strokeDasharray & "' ")
+	lineageTag: 2aa07ac4-bd1b-45f7-93db-54a72775a9d7
+
 /// Creates a rect SVG element
 /// @param {string} x – X position
 /// @param {string} y – Y position
@@ -1334,24 +1341,26 @@ function 'SVG.Attr.Stroke' =
 /// @param {string} [attributes] – Additional attributes from SVG.Attr.* functions
 /// @returns {string} <rect> element
 function 'SVG.Element.Rect' =
-    (
-        x: STRING,
-        y: STRING,
-        width: STRING,
-        height: STRING,
-        rx: STRING,
-        ry: STRING,
-        attributes: STRING
-    ) =>
-    "<rect" &
-    " x='" & x & "'" &
-    " y='" & y & "'" &
-    " width='" & width & "'" &
-    " height='" & height & "'" &
-    IF(NOT ISBLANK(rx), " rx='" & rx & "'") &
-    IF(NOT ISBLANK(ry), " ry='" & ry & "'") &
-    IF(NOT ISBLANK(attributes), " " & attributes) &
-    "/>"
+		(
+		    x: STRING,
+		    y: STRING,
+		    width: STRING,
+		    height: STRING,
+		    rx: STRING,
+		    ry: STRING,
+		    attributes: STRING
+		) =>
+		"<rect" &
+		" x='" & x & "'" &
+		" y='" & y & "'" &
+		" width='" & width & "'" &
+		" height='" & height & "'" &
+		IF(NOT ISBLANK(rx), " rx='" & rx & "'") &
+		IF(NOT ISBLANK(ry), " ry='" & ry & "'") &
+		IF(NOT ISBLANK(attributes), " " & attributes) &
+		"/>"
+	lineageTag: ac051db8-6802-4568-b4ef-f1d69ee9e06f
+
 /// Creates a text SVG element
 /// @param {string} x – X position
 /// @param {string} y – Y position
@@ -1359,17 +1368,19 @@ function 'SVG.Element.Rect' =
 /// @param {string} [attributes] – Additional attributes from SVG.Attr.* functions
 /// @returns {string} <text> element
 function 'SVG.Element.Txt' =
-    (
-        x: STRING,
-        y: STRING,
-        txt: STRING,
-        attributes: STRING
-    ) =>
-    "<text" &
-    " x='" & x & "'" &
-    " y='" & y & "'" &
-    IF(NOT ISBLANK(attributes), " " & attributes) &
-    ">" & txt & "</text>"
+		(
+		    x: STRING,
+		    y: STRING,
+		    txt: STRING,
+		    attributes: STRING
+		) =>
+		"<text" &
+		" x='" & x & "'" &
+		" y='" & y & "'" &
+		IF(NOT ISBLANK(attributes), " " & attributes) &
+		">" & txt & "</text>"
+	lineageTag: 57cc57d6-d79a-4553-abcc-42ba15f45e06
+
 /// Creates a line SVG element
 /// @param {string} x1 – Start X position
 /// @param {string} y1 – Start Y position
@@ -1378,78 +1389,88 @@ function 'SVG.Element.Txt' =
 /// @param {string} [attributes] – Additional attributes from SVG.Attr.* functions
 /// @returns {string} <line> element
 function 'SVG.Element.Line' =
-    (
-        x1: STRING,
-        y1: STRING,
-        x2: STRING,
-        y2: STRING,
-        attributes: STRING
-    ) =>
-    "<line" &
-    " x1='" & x1 & "'" &
-    " y1='" & y1 & "'" &
-    " x2='" & x2 & "'" &
-    " y2='" & y2 & "'" &
-    IF(NOT ISBLANK(attributes), " " & attributes) &
-    "/>"
+		(
+		    x1: STRING,
+		    y1: STRING,
+		    x2: STRING,
+		    y2: STRING,
+		    attributes: STRING
+		) =>
+		"<line" &
+		" x1='" & x1 & "'" &
+		" y1='" & y1 & "'" &
+		" x2='" & x2 & "'" &
+		" y2='" & y2 & "'" &
+		IF(NOT ISBLANK(attributes), " " & attributes) &
+		"/>"
+	lineageTag: 64e27954-ce26-4e2f-95f2-69882d505870
+
 /// Wraps content in SVG container with data-URI prefix
 /// @param {string} width – SVG width
 /// @param {string} height – SVG height
 /// @param {string} contents – SVG inner content
 /// @returns {string} Complete data-URI SVG string
 function 'SVG.Wrap' =
-    (
-        width: STRING,
-        height: STRING,
-        contents: STRING
-    ) =>
-    "data:image/svg+xml;utf8," &
-    "<svg xmlns='http://www.w3.org/2000/svg' width='" & width & "' height='" & height & "'>" &
-    contents &
-    "</svg>"
+		(
+		    width: STRING,
+		    height: STRING,
+		    contents: STRING
+		) =>
+		"data:image/svg+xml;utf8," &
+		"<svg xmlns='http://www.w3.org/2000/svg' width='" & width & "' height='" & height & "'>" &
+		contents &
+		"</svg>"
+	lineageTag: e084d41a-acf1-4c95-a582-9d154c325a79
+
 /// URL-encodes a hex color for SVG data-URI (replaces # with %23)
 /// @param {string} hex – Hex color with # (e.g., "#16a34a")
 /// @returns {string} URL-encoded hex (e.g., "%2316a34a")
 function 'SVG.Color.Encode' =
-    (
-        hex: STRING
-    ) =>
-    SUBSTITUTE(hex, "#", "%23")
+		(
+		    hex: STRING
+		) =>
+		SUBSTITUTE(hex, "#", "%23")
+	lineageTag: ec84bc26-0d95-4a2b-a567-91974883d6dd
+
 /// Returns delta color based on change direction
 /// @param {numeric} change – The change percentage
 /// @param {boolean} invert – TRUE if higher is bad (e.g., churn)
 /// @param {boolean} hasData – FALSE if no comparison data available
 /// @returns {string} URL-encoded hex color
 function 'SVG.Color.Delta' =
-    (
-        change: NUMERIC,
-        invert: BOOLEAN,
-        hasData: BOOLEAN
-    ) =>
-    VAR _green = "%2316a34a"
-    VAR _red = "%23dc2626"
-    VAR _gray = "%23999999"
-    VAR _isPositive = change >= 0
-    RETURN
-        IF(NOT hasData, _gray,
-            IF(_isPositive = NOT invert, _green, _red)
-        )
+		(
+		    change: NUMERIC,
+		    invert: BOOLEAN,
+		    hasData: BOOLEAN
+		) =>
+		VAR _green = "%2316a34a"
+		VAR _red = "%23dc2626"
+		VAR _gray = "%23999999"
+		VAR _isPositive = change >= 0
+		RETURN
+		    IF(NOT hasData, _gray,
+		        IF(_isPositive = NOT invert, _green, _red)
+		    )
+	lineageTag: bdfdab5e-7f88-49e6-a38d-89d060a9ba16
+
 /// Normalizes a value to pixel height
 /// @param {numeric} value – Current value
 /// @param {numeric} maxValue – Maximum value in range
 /// @param {numeric} maxHeight – Maximum pixel height
 /// @returns {numeric} Normalized pixel height (0 if blank)
 function 'SVG.Scale.Normalize' =
-    (
-        value: NUMERIC,
-        maxValue: NUMERIC,
-        maxHeight: NUMERIC
-    ) =>
-    IF(ISBLANK(value), 0, ROUND(maxHeight * DIVIDE(value, maxValue, 0), 0))
+		(
+		    value: NUMERIC,
+		    maxValue: NUMERIC,
+		    maxHeight: NUMERIC
+		) =>
+		IF(ISBLANK(value), 0, ROUND(maxHeight * DIVIDE(value, maxValue, 0), 0))
+	lineageTag: d2593258-400d-4b6b-a887-7e86b6d59a7b
+
 /// ════════════════════════════════════════════════════════════════════════════
 /// High-level KPI Card with Monthly Sparkline
 /// Generates a 360×260 SVG card showing KPI value, YoY delta, and sparkline.
-///
+/// 
 /// @param {measureref} measure – The measure to visualize
 /// @param {string} title – Display title
 /// @param {string} format – DAX format string
@@ -1459,116 +1480,118 @@ function 'SVG.Scale.Normalize' =
 /// @returns {string} SVG data-URI string
 /// ════════════════════════════════════════════════════════════════════════════
 function 'SVG.KpiCard' =
-    (
-        measure: MEASUREREF,
-        title: STRING,
-        format: STRING,
-        invertColors: BOOLEAN,
-        dateColumn: COLUMNREF,
-        monthColumn: COLUMNREF
-    ) =>
-    // ── Configuration ───────────────────────────────────────────────────────
-    VAR _width = 360
-    VAR _height = 260
-    VAR _barMaxHeight = 85
-    VAR _barWidth = 18
-    VAR _barSpacing = 27
-    VAR _barStartX = 23
-    VAR _barBaseY = 218
-    VAR _colorNormal = "%2393c5fd"
-    VAR _colorHighlight = "%231e3a8a"
-    VAR _colorBorder = "%233b82f6"
-    VAR _colorTitle = "%231e293b"
-    VAR _colorValue = "%230f172a"
-    VAR _colorLabel = "%2364748b"
-    VAR _colorSeparator = "%23e2e8f0"
-    VAR _fontFamily = "Segoe UI,sans-serif"
-    // ── Current Value ───────────────────────────────────────────────────────
-    VAR _current = measure
-    VAR _currentFmt = FORMAT(_current, format)
-    // ── Prior Year (using DATEADD for proper time intelligence) ─────────────
-    VAR _py = CALCULATE(measure, DATEADD(dateColumn, -1, YEAR))
-    VAR _hasPY = NOT ISBLANK(_py)
-    VAR _chgPct = DIVIDE(_current - _py, _py, 0)
-    VAR _chgColor = 'SVG.Color.Delta'(_chgPct, invertColors, _hasPY)
-    VAR _chgText = IF(_hasPY,
-        UNICHAR(916) & "PY " & IF(_chgPct >= 0, "+", "") & FORMAT(ABS(_chgPct) * 100, "0.0") & "%",
-        UNICHAR(916) & "PY N/A"
-    )
-    // ── Monthly Data ────────────────────────────────────────────────────────
-    VAR _monthData = ADDCOLUMNS(
-        GENERATESERIES(1, 12, 1),
-        "@Value", CALCULATE(measure, REMOVEFILTERS(monthColumn), monthColumn = [Value])
-    )
-    VAR _maxVal = MAXX(_monthData, [@Value])
-    VAR _latestM = CALCULATE(MAX(monthColumn))
-    // ── Card Border ─────────────────────────────────────────────────────────
-    VAR _border = 'SVG.Element.Rect'(
-        "1", "1",
-        FORMAT(_width - 2, "0"), FORMAT(_height - 2, "0"),
-        "12", "12",
-        'SVG.Attr.Shapes'("white", BLANK(), _colorBorder, 2, BLANK())
-    )
-    // ── Text Elements ───────────────────────────────────────────────────────
-    VAR _titleEl = 'SVG.Element.Txt'(
-        "16", "26", title,
-        'SVG.Attr.Shapes'(_colorTitle, BLANK(), BLANK(), BLANK(), BLANK()) &
-        'SVG.Attr.Txt'(_fontFamily, 13, "bold", BLANK(), BLANK())
-    )
-    VAR _valueEl = 'SVG.Element.Txt'(
-        "16", "70", _currentFmt,
-        'SVG.Attr.Shapes'(_colorValue, BLANK(), BLANK(), BLANK(), BLANK()) &
-        'SVG.Attr.Txt'(_fontFamily, 32, "700", BLANK(), BLANK())
-    )
-    VAR _deltaEl = 'SVG.Element.Txt'(
-        "16", "94", _chgText,
-        'SVG.Attr.Shapes'(_chgColor, BLANK(), BLANK(), BLANK(), BLANK()) &
-        'SVG.Attr.Txt'(_fontFamily, 12, BLANK(), BLANK(), BLANK())
-    )
-    // ── Separator Line ──────────────────────────────────────────────────────
-    VAR _separator = 'SVG.Element.Line'(
-        "16", "107", "344", "107",
-        'SVG.Attr.Stroke'(_colorSeparator, 1, "4,3")
-    )
-    // ── Sparkline Bars ──────────────────────────────────────────────────────
-    VAR _bars = CONCATENATEX(
-        _monthData,
-        VAR _h = 'SVG.Scale.Normalize'([@Value], _maxVal, _barMaxHeight)
-        VAR _x = _barStartX + ([Value] - 1) * _barSpacing
-        VAR _y = _barBaseY - _h
-        VAR _color = IF([Value] = _latestM, _colorHighlight, _colorNormal)
-        RETURN 'SVG.Element.Rect'(
-            FORMAT(_x, "0"), FORMAT(_y, "0"),
-            FORMAT(_barWidth, "0"), FORMAT(_h, "0"),
-            "3", "3",
-            'SVG.Attr.Shapes'(_color, BLANK(), BLANK(), BLANK(), BLANK())
-        ),
-        "",
-        [Value]
-    )
-    // ── Month Labels ────────────────────────────────────────────────────────
-    VAR _monthLabels = {"J","F","M","A","M","J","J","A","S","O","N","D"}
-    VAR _labels = CONCATENATEX(
-        GENERATESERIES(1, 12, 1),
-        VAR _x = _barStartX + ([Value] - 1) * _barSpacing + _barWidth / 2
-        VAR _label = INDEX([Value], _monthLabels)
-        RETURN 'SVG.Element.Txt'(
-            FORMAT(_x, "0"), "238", _label,
-            'SVG.Attr.Shapes'(_colorLabel, BLANK(), BLANK(), BLANK(), BLANK()) &
-            'SVG.Attr.Txt'(_fontFamily, 9, BLANK(), "middle", BLANK())
-        ),
-        "",
-        [Value]
-    )
-    // ── Assemble SVG ────────────────────────────────────────────────────────
-    VAR _content = _border & _titleEl & _valueEl & _deltaEl & _separator & _bars & _labels
-    RETURN IF(ISBLANK(_current), BLANK(), 'SVG.Wrap'(FORMAT(_width, "0"), FORMAT(_height, "0"), _content))
+		(
+		    measure: MEASUREREF,
+		    title: STRING,
+		    format: STRING,
+		    invertColors: BOOLEAN,
+		    dateColumn: COLUMNREF,
+		    monthColumn: COLUMNREF
+		) =>
+		// ── Configuration ───────────────────────────────────────────────────────
+		VAR _width = 360
+		VAR _height = 260
+		VAR _barMaxHeight = 85
+		VAR _barWidth = 18
+		VAR _barSpacing = 27
+		VAR _barStartX = 23
+		VAR _barBaseY = 218
+		VAR _colorNormal = "%2393c5fd"
+		VAR _colorHighlight = "%231e3a8a"
+		VAR _colorBorder = "%233b82f6"
+		VAR _colorTitle = "%231e293b"
+		VAR _colorValue = "%230f172a"
+		VAR _colorLabel = "%2364748b"
+		VAR _colorSeparator = "%23e2e8f0"
+		VAR _fontFamily = "Segoe UI,sans-serif"
+		// ── Current Value ───────────────────────────────────────────────────────
+		VAR _current = measure
+		VAR _currentFmt = FORMAT(_current, format)
+		// ── Prior Year (using DATEADD for proper time intelligence) ─────────────
+		VAR _py = CALCULATE(measure, DATEADD(dateColumn, -1, YEAR))
+		VAR _hasPY = NOT ISBLANK(_py)
+		VAR _chgPct = DIVIDE(_current - _py, _py, 0)
+		VAR _chgColor = 'SVG.Color.Delta'(_chgPct, invertColors, _hasPY)
+		VAR _chgText = IF(_hasPY,
+		    UNICHAR(916) & "PY " & IF(_chgPct >= 0, "+", "") & FORMAT(ABS(_chgPct) * 100, "0.0") & "%",
+		    UNICHAR(916) & "PY N/A"
+		)
+		// ── Monthly Data ────────────────────────────────────────────────────────
+		VAR _monthData = ADDCOLUMNS(
+		    GENERATESERIES(1, 12, 1),
+		    "@Value", CALCULATE(measure, REMOVEFILTERS(monthColumn), monthColumn = [Value])
+		)
+		VAR _maxVal = MAXX(_monthData, [@Value])
+		VAR _latestM = CALCULATE(MAX(monthColumn))
+		// ── Card Border ─────────────────────────────────────────────────────────
+		VAR _border = 'SVG.Element.Rect'(
+		    "1", "1",
+		    FORMAT(_width - 2, "0"), FORMAT(_height - 2, "0"),
+		    "12", "12",
+		    'SVG.Attr.Shapes'("white", BLANK(), _colorBorder, 2, BLANK())
+		)
+		// ── Text Elements ───────────────────────────────────────────────────────
+		VAR _titleEl = 'SVG.Element.Txt'(
+		    "16", "26", title,
+		    'SVG.Attr.Shapes'(_colorTitle, BLANK(), BLANK(), BLANK(), BLANK()) &
+		    'SVG.Attr.Txt'(_fontFamily, 13, "bold", BLANK(), BLANK())
+		)
+		VAR _valueEl = 'SVG.Element.Txt'(
+		    "16", "70", _currentFmt,
+		    'SVG.Attr.Shapes'(_colorValue, BLANK(), BLANK(), BLANK(), BLANK()) &
+		    'SVG.Attr.Txt'(_fontFamily, 32, "700", BLANK(), BLANK())
+		)
+		VAR _deltaEl = 'SVG.Element.Txt'(
+		    "16", "94", _chgText,
+		    'SVG.Attr.Shapes'(_chgColor, BLANK(), BLANK(), BLANK(), BLANK()) &
+		    'SVG.Attr.Txt'(_fontFamily, 12, BLANK(), BLANK(), BLANK())
+		)
+		// ── Separator Line ──────────────────────────────────────────────────────
+		VAR _separator = 'SVG.Element.Line'(
+		    "16", "107", "344", "107",
+		    'SVG.Attr.Stroke'(_colorSeparator, 1, "4,3")
+		)
+		// ── Sparkline Bars ──────────────────────────────────────────────────────
+		VAR _bars = CONCATENATEX(
+		    _monthData,
+		    VAR _h = 'SVG.Scale.Normalize'([@Value], _maxVal, _barMaxHeight)
+		    VAR _x = _barStartX + ([Value] - 1) * _barSpacing
+		    VAR _y = _barBaseY - _h
+		    VAR _color = IF([Value] = _latestM, _colorHighlight, _colorNormal)
+		    RETURN 'SVG.Element.Rect'(
+		        FORMAT(_x, "0"), FORMAT(_y, "0"),
+		        FORMAT(_barWidth, "0"), FORMAT(_h, "0"),
+		        "3", "3",
+		        'SVG.Attr.Shapes'(_color, BLANK(), BLANK(), BLANK(), BLANK())
+		    ),
+		    "",
+		    [Value]
+		)
+		// ── Month Labels ────────────────────────────────────────────────────────
+		VAR _monthLabels = {"J","F","M","A","M","J","J","A","S","O","N","D"}
+		VAR _labels = CONCATENATEX(
+		    GENERATESERIES(1, 12, 1),
+		    VAR _x = _barStartX + ([Value] - 1) * _barSpacing + _barWidth / 2
+		    VAR _label = INDEX([Value], _monthLabels)
+		    RETURN 'SVG.Element.Txt'(
+		        FORMAT(_x, "0"), "238", _label,
+		        'SVG.Attr.Shapes'(_colorLabel, BLANK(), BLANK(), BLANK(), BLANK()) &
+		        'SVG.Attr.Txt'(_fontFamily, 9, BLANK(), "middle", BLANK())
+		    ),
+		    "",
+		    [Value]
+		)
+		// ── Assemble SVG ────────────────────────────────────────────────────────
+		VAR _content = _border & _titleEl & _valueEl & _deltaEl & _separator & _bars & _labels
+		RETURN IF(ISBLANK(_current), BLANK(), 'SVG.Wrap'(FORMAT(_width, "0"), FORMAT(_height, "0"), _content))
+	lineageTag: 06b6fae7-440a-4c31-9e30-0b5db813716f
+
 /// ════════════════════════════════════════════════════════════════════════════
 /// HTML5 KPI Card Library - Modern animated HTML cards for Power BI
 /// ════════════════════════════════════════════════════════════════════════════
 /// Generates an HTML5 KPI card with animated status indicator
 /// Uses RFM Theme colors: Primary #FF6600, Accent #ff983f
-///
+/// 
 /// @param {string} currentValueFmt – Formatted current value (e.g., "$1,234")
 /// @param {string} priorYearFmt – Formatted prior year value
 /// @param {string} yoyPercentFmt – Formatted YoY percentage (e.g., "+5.2%")
@@ -1579,107 +1602,109 @@ function 'SVG.KpiCard' =
 /// @returns {string} Complete HTML5 document string
 /// ════════════════════════════════════════════════════════════════════════════
 function 'HTML.KpiCard' =
-    (
-        currentValueFmt: STRING,
-        priorYearFmt: STRING,
-        yoyPercentFmt: STRING,
-        yoyChange: DOUBLE,
-        subtitle: STRING,
-        title: STRING,
-        iconType: STRING
-    ) =>
-    // ── RFM Theme Colors ─────────────────────────────────────────────────────
-    VAR _primaryColor = "#1d1f21"
-    VAR _accentColor = "#FF6600"
-    VAR _accentLight = "#ff983f"
-    VAR _secondaryColor = "#444648"
-    VAR _borderColor = "#cccccc"
-    // ── Status Colors ────────────────────────────────────────────────────────
-    VAR _isPositive = yoyChange >= 0
-    VAR _statusColor = IF(_isPositive, "#4CAF50", "#E53935")
-    VAR _statusIndicator = IF(_isPositive, "On Track", "Off Track")
-    VAR _pulseColor = IF(_isPositive, "rgba(76, 175, 80, 0.7)", "rgba(229, 57, 53, 0.7)")
-    VAR _pulseTransparent = IF(_isPositive, "rgba(76, 175, 80, 0)", "rgba(229, 57, 53, 0)")
-    // ── Icon SVG Paths ───────────────────────────────────────────────────────
-    VAR _iconOrders = "<path d='M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z'></path><line x1='3' y1='6' x2='21' y2='6'></line><path d='M16 10a4 4 0 0 1-8 0'></path>"
-    VAR _iconRevenue = "<line x1='12' y1='1' x2='12' y2='23'></line><path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'></path>"
-    VAR _iconProfit = "<line x1='18' y1='20' x2='18' y2='10'></line><line x1='12' y1='20' x2='12' y2='4'></line><line x1='6' y1='20' x2='6' y2='14'></line>"
-    VAR _iconSvg = SWITCH(iconType, "orders", _iconOrders, "revenue", _iconRevenue, "profit", _iconProfit, _iconOrders)
-    // ── Card Dimensions ──────────────────────────────────────────────────────
-    VAR _cardWidth = "380px"
-    VAR _cardHeight = "280px"
-    VAR _nl = UNICHAR(10)
-    VAR _html =
-        "<!DOCTYPE html>" & _nl &
-        "<html lang='en'>" & _nl &
-        "<head>" & _nl &
-        "    <meta charset='UTF-8'>" & _nl &
-        "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>" & _nl &
-        "    <style>" & _nl &
-        "        * { box-sizing: border-box; margin: 0; padding: 0; }" & _nl &
-        "        html, body { margin: 0; padding: 0; overflow: hidden; font-family: 'Segoe UI', sans-serif; background: transparent; }" & _nl &
-        "        .card-container { width: " & _cardWidth & "; height: " & _cardHeight & "; margin: 0 auto; display: flex; align-items: center; justify-content: center; padding: 10px; }" & _nl &
-        "        .kpi-card { background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%); border-radius: 12px; border: 1px solid " & _borderColor & "; overflow: hidden; position: relative; width: 100%; height: 100%; transition: all 0.3s ease; }" & _nl &
-        "        .kpi-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); border-color: " & _accentColor & "; }" & _nl &
-        "        .kpi-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, " & _accentColor & ", " & _accentLight & "); }" & _nl &
-        "        .card-content { padding: 24px; height: 100%; display: flex; flex-direction: column; }" & _nl &
-        "        .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }" & _nl &
-        "        .title-section { flex: 1; }" & _nl &
-        "        .card-subtitle { font-size: 14px; font-weight: 600; color: " & _accentColor & "; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }" & _nl &
-        "        .card-title { font-size: 16px; font-weight: 700; color: " & _primaryColor & "; }" & _nl &
-        "        .icon-wrapper { width: 48px; height: 48px; border-radius: 10px; background: linear-gradient(135deg, " & _accentColor & " 0%, " & _accentLight & " 100%); display: flex; align-items: center; justify-content: center; }" & _nl &
-        "        .card-main { flex: 1; display: flex; flex-direction: column; justify-content: center; }" & _nl &
-        "        .card-value { font-size: 2.8rem; font-weight: 800; color: " & _primaryColor & "; line-height: 1; margin-bottom: 12px; position: relative; }" & _nl &
-        "        .value-decoration { position: absolute; bottom: -4px; left: 0; width: 60px; height: 3px; background: linear-gradient(90deg, " & _accentColor & " 0%, transparent 100%); border-radius: 2px; }" & _nl &
-        "        .card-footer { display: flex; flex-direction: column; gap: 12px; padding-top: 16px; border-top: 1px dashed #e2e8f0; }" & _nl &
-        "        .performance-metrics { display: flex; justify-content: space-between; align-items: center; }" & _nl &
-        "        .metric-item { display: flex; flex-direction: column; align-items: center; font-size: 14px; }" & _nl &
-        "        .metric-value { font-weight: 700; color: " & _accentColor & "; margin-bottom: 2px; }" & _nl &
-        "        .metric-label { color: " & _secondaryColor & "; font-weight: 500; font-size: 12px; }" & _nl &
-        "        .status-indicator { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: " & _statusColor & "; }" & _nl &
-        "        .status-dot { width: 8px; height: 8px; border-radius: 50%; background: " & _statusColor & "; animation: pulse 2s infinite; }" & _nl &
-        "        @keyframes pulse { 0% { box-shadow: 0 0 0 0 " & _pulseColor & "; } 70% { box-shadow: 0 0 0 6px " & _pulseTransparent & "; } 100% { box-shadow: 0 0 0 0 " & _pulseTransparent & "; } }" & _nl &
-        "    </style>" & _nl &
-        "</head>" & _nl &
-        "<body>" & _nl &
-        "    <div class='card-container'>" & _nl &
-        "        <div class='kpi-card'>" & _nl &
-        "            <div class='card-content'>" & _nl &
-        "                <div class='card-top'>" & _nl &
-        "                    <div class='title-section'>" & _nl &
-        "                        <div class='card-subtitle'>" & subtitle & "</div>" & _nl &
-        "                        <div class='card-title'>" & title & "</div>" & _nl &
-        "                    </div>" & _nl &
-        "                    <div class='icon-wrapper'>" & _nl &
-        "                        <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'>" & _iconSvg & "</svg>" & _nl &
-        "                    </div>" & _nl &
-        "                </div>" & _nl &
-        "                <div class='card-main'>" & _nl &
-        "                    <div class='card-value'>" & _nl &
-        "                        " & currentValueFmt & _nl &
-        "                        <div class='value-decoration'></div>" & _nl &
-        "                    </div>" & _nl &
-        "                </div>" & _nl &
-        "                <div class='card-footer'>" & _nl &
-        "                    <div class='performance-metrics'>" & _nl &
-        "                        <div class='metric-item'>" & _nl &
-        "                            <div class='metric-value'>" & priorYearFmt & "</div>" & _nl &
-        "                            <div class='metric-label'>Prior Year</div>" & _nl &
-        "                        </div>" & _nl &
-        "                        <div class='metric-item'>" & _nl &
-        "                            <div class='metric-value'>" & yoyPercentFmt & "</div>" & _nl &
-        "                            <div class='metric-label'>YoY Change</div>" & _nl &
-        "                        </div>" & _nl &
-        "                        <div class='status-indicator'>" & _nl &
-        "                            <div class='status-dot'></div>" & _nl &
-        "                            <span>" & _statusIndicator & "</span>" & _nl &
-        "                        </div>" & _nl &
-        "                    </div>" & _nl &
-        "                </div>" & _nl &
-        "            </div>" & _nl &
-        "        </div>" & _nl &
-        "    </div>" & _nl &
-        "</body>" & _nl &
-        "</html>"
-    RETURN
-        _html
+		(
+		    currentValueFmt: STRING,
+		    priorYearFmt: STRING,
+		    yoyPercentFmt: STRING,
+		    yoyChange: DOUBLE,
+		    subtitle: STRING,
+		    title: STRING,
+		    iconType: STRING
+		) =>
+		// ── RFM Theme Colors ─────────────────────────────────────────────────────
+		VAR _primaryColor = "#1d1f21"
+		VAR _accentColor = "#FF6600"
+		VAR _accentLight = "#ff983f"
+		VAR _secondaryColor = "#444648"
+		VAR _borderColor = "#cccccc"
+		// ── Status Colors ────────────────────────────────────────────────────────
+		VAR _isPositive = yoyChange >= 0
+		VAR _statusColor = IF(_isPositive, "#4CAF50", "#E53935")
+		VAR _statusIndicator = IF(_isPositive, "On Track", "Off Track")
+		VAR _pulseColor = IF(_isPositive, "rgba(76, 175, 80, 0.7)", "rgba(229, 57, 53, 0.7)")
+		VAR _pulseTransparent = IF(_isPositive, "rgba(76, 175, 80, 0)", "rgba(229, 57, 53, 0)")
+		// ── Icon SVG Paths ───────────────────────────────────────────────────────
+		VAR _iconOrders = "<path d='M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z'></path><line x1='3' y1='6' x2='21' y2='6'></line><path d='M16 10a4 4 0 0 1-8 0'></path>"
+		VAR _iconRevenue = "<line x1='12' y1='1' x2='12' y2='23'></line><path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'></path>"
+		VAR _iconProfit = "<line x1='18' y1='20' x2='18' y2='10'></line><line x1='12' y1='20' x2='12' y2='4'></line><line x1='6' y1='20' x2='6' y2='14'></line>"
+		VAR _iconSvg = SWITCH(iconType, "orders", _iconOrders, "revenue", _iconRevenue, "profit", _iconProfit, _iconOrders)
+		// ── Card Dimensions ──────────────────────────────────────────────────────
+		VAR _cardWidth = "380px"
+		VAR _cardHeight = "280px"
+		VAR _nl = UNICHAR(10)
+		VAR _html =
+		    "<!DOCTYPE html>" & _nl &
+		    "<html lang='en'>" & _nl &
+		    "<head>" & _nl &
+		    "    <meta charset='UTF-8'>" & _nl &
+		    "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>" & _nl &
+		    "    <style>" & _nl &
+		    "        * { box-sizing: border-box; margin: 0; padding: 0; }" & _nl &
+		    "        html, body { margin: 0; padding: 0; overflow: hidden; font-family: 'Segoe UI', sans-serif; background: transparent; }" & _nl &
+		    "        .card-container { width: " & _cardWidth & "; height: " & _cardHeight & "; margin: 0 auto; display: flex; align-items: center; justify-content: center; padding: 10px; }" & _nl &
+		    "        .kpi-card { background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%); border-radius: 12px; border: 1px solid " & _borderColor & "; overflow: hidden; position: relative; width: 100%; height: 100%; transition: all 0.3s ease; }" & _nl &
+		    "        .kpi-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); border-color: " & _accentColor & "; }" & _nl &
+		    "        .kpi-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, " & _accentColor & ", " & _accentLight & "); }" & _nl &
+		    "        .card-content { padding: 24px; height: 100%; display: flex; flex-direction: column; }" & _nl &
+		    "        .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }" & _nl &
+		    "        .title-section { flex: 1; }" & _nl &
+		    "        .card-subtitle { font-size: 14px; font-weight: 600; color: " & _accentColor & "; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }" & _nl &
+		    "        .card-title { font-size: 16px; font-weight: 700; color: " & _primaryColor & "; }" & _nl &
+		    "        .icon-wrapper { width: 48px; height: 48px; border-radius: 10px; background: linear-gradient(135deg, " & _accentColor & " 0%, " & _accentLight & " 100%); display: flex; align-items: center; justify-content: center; }" & _nl &
+		    "        .card-main { flex: 1; display: flex; flex-direction: column; justify-content: center; }" & _nl &
+		    "        .card-value { font-size: 2.8rem; font-weight: 800; color: " & _primaryColor & "; line-height: 1; margin-bottom: 12px; position: relative; }" & _nl &
+		    "        .value-decoration { position: absolute; bottom: -4px; left: 0; width: 60px; height: 3px; background: linear-gradient(90deg, " & _accentColor & " 0%, transparent 100%); border-radius: 2px; }" & _nl &
+		    "        .card-footer { display: flex; flex-direction: column; gap: 12px; padding-top: 16px; border-top: 1px dashed #e2e8f0; }" & _nl &
+		    "        .performance-metrics { display: flex; justify-content: space-between; align-items: center; }" & _nl &
+		    "        .metric-item { display: flex; flex-direction: column; align-items: center; font-size: 14px; }" & _nl &
+		    "        .metric-value { font-weight: 700; color: " & _accentColor & "; margin-bottom: 2px; }" & _nl &
+		    "        .metric-label { color: " & _secondaryColor & "; font-weight: 500; font-size: 12px; }" & _nl &
+		    "        .status-indicator { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: " & _statusColor & "; }" & _nl &
+		    "        .status-dot { width: 8px; height: 8px; border-radius: 50%; background: " & _statusColor & "; animation: pulse 2s infinite; }" & _nl &
+		    "        @keyframes pulse { 0% { box-shadow: 0 0 0 0 " & _pulseColor & "; } 70% { box-shadow: 0 0 0 6px " & _pulseTransparent & "; } 100% { box-shadow: 0 0 0 0 " & _pulseTransparent & "; } }" & _nl &
+		    "    </style>" & _nl &
+		    "</head>" & _nl &
+		    "<body>" & _nl &
+		    "    <div class='card-container'>" & _nl &
+		    "        <div class='kpi-card'>" & _nl &
+		    "            <div class='card-content'>" & _nl &
+		    "                <div class='card-top'>" & _nl &
+		    "                    <div class='title-section'>" & _nl &
+		    "                        <div class='card-subtitle'>" & subtitle & "</div>" & _nl &
+		    "                        <div class='card-title'>" & title & "</div>" & _nl &
+		    "                    </div>" & _nl &
+		    "                    <div class='icon-wrapper'>" & _nl &
+		    "                        <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'>" & _iconSvg & "</svg>" & _nl &
+		    "                    </div>" & _nl &
+		    "                </div>" & _nl &
+		    "                <div class='card-main'>" & _nl &
+		    "                    <div class='card-value'>" & _nl &
+		    "                        " & currentValueFmt & _nl &
+		    "                        <div class='value-decoration'></div>" & _nl &
+		    "                    </div>" & _nl &
+		    "                </div>" & _nl &
+		    "                <div class='card-footer'>" & _nl &
+		    "                    <div class='performance-metrics'>" & _nl &
+		    "                        <div class='metric-item'>" & _nl &
+		    "                            <div class='metric-value'>" & priorYearFmt & "</div>" & _nl &
+		    "                            <div class='metric-label'>Prior Year</div>" & _nl &
+		    "                        </div>" & _nl &
+		    "                        <div class='metric-item'>" & _nl &
+		    "                            <div class='metric-value'>" & yoyPercentFmt & "</div>" & _nl &
+		    "                            <div class='metric-label'>YoY Change</div>" & _nl &
+		    "                        </div>" & _nl &
+		    "                        <div class='status-indicator'>" & _nl &
+		    "                            <div class='status-dot'></div>" & _nl &
+		    "                            <span>" & _statusIndicator & "</span>" & _nl &
+		    "                        </div>" & _nl &
+		    "                    </div>" & _nl &
+		    "                </div>" & _nl &
+		    "            </div>" & _nl &
+		    "        </div>" & _nl &
+		    "    </div>" & _nl &
+		    "</body>" & _nl &
+		    "</html>"
+		RETURN
+		    _html
+	lineageTag: 12eb0ddf-8632-4361-8a25-0e6665b86527
+
