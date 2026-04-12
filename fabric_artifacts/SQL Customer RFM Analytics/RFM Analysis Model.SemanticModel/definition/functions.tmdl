@@ -1601,7 +1601,7 @@ function 'SVG.KpiCard' =
 /// @param {string} iconType – Icon type: "orders", "revenue", or "profit"
 /// @returns {string} Complete HTML5 document string
 /// ════════════════════════════════════════════════════════════════════════════
-function 'RFM.HTML.KpiCard' =
+function 'RFM.Web.KpiCard' =
 		(
 		    currentValueFmt: STRING,
 		    priorYearFmt: STRING,
