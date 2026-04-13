@@ -38,10 +38,10 @@
                       "Entity": "Metrics"
                     }
                   },
-                  "Property": "HTML Card Total Orders"
+                  "Property": "HTML Card Fact Orders"
                 }
               },
-              "queryRef": "Metrics.HTML Card Total Orders",
+              "queryRef": "Metrics.HTML Card Fact Orders",
               "nativeQueryRef": " ",
               "displayName": " "
             },
@@ -53,10 +53,10 @@
                       "Entity": "Metrics"
                     }
                   },
-                  "Property": "HTML Card Total Revenue"
+                  "Property": "HTML Card Fact Profit"
                 }
               },
-              "queryRef": "Metrics.HTML Card Total Revenue",
+              "queryRef": "Metrics.HTML Card Fact Profit",
               "nativeQueryRef": " 1",
               "displayName": " "
             },
@@ -68,10 +68,10 @@
                       "Entity": "Metrics"
                     }
                   },
-                  "Property": "HTML Card Total Profit"
+                  "Property": "HTML Card Fact Selected"
                 }
               },
-              "queryRef": "Metrics.HTML Card Total Profit",
+              "queryRef": "Metrics.HTML Card Fact Selected",
               "nativeQueryRef": " 2",
               "displayName": " "
             }
@@ -244,48 +244,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "e870fca24ed22a8ec001",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Metrics"
-              }
-            },
-            "Property": "HTML Card Total Orders"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f50576f983564a5aac75",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Metrics"
-              }
-            },
-            "Property": "HTML Card Total Revenue"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "e5fc25132a883d64e062",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Metrics"
-              }
-            },
-            "Property": "HTML Card Total Profit"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "c58070a1410e07eb0794",
         "field": {
           "Measure": {
@@ -295,6 +253,48 @@
               }
             },
             "Property": "HTML Card Total Customers"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fc52ee838cc45b685743",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Metrics"
+              }
+            },
+            "Property": "HTML Card Fact Orders"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "302ac63f13c00bc47cc6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Metrics"
+              }
+            },
+            "Property": "HTML Card Fact Profit"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "344c1447a91003b82e0e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Metrics"
+              }
+            },
+            "Property": "HTML Card Fact Selected"
           }
         },
         "type": "Advanced"

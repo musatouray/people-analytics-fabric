@@ -707,13 +707,14 @@ table Metrics
 			VAR _current = [Total Orders]
 			VAR _py = [Total Orders PY]
 			VAR _yoyPct = [Total Orders YOY %]
+			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
 			RETURN
 			    SVG.HtmlCard(
 			        FORMAT(_current, "#,##0"),
 			        FORMAT(_py, "#,##0"),
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
 			        "Total Orders",
-			        "Year to Date",
+			        _subtitle,
 			        "orders"
 			    )
 		formatString: @
@@ -726,13 +727,14 @@ table Metrics
 			VAR _current = [Total Revenue]
 			VAR _py = [Total Revenue PY]
 			VAR _yoyPct = [Total Revenue YOY %]
+			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
 			RETURN
 			    SVG.HtmlCard(
 			        "$" & FORMAT(_current, "#,##0"),
 			        "$" & FORMAT(_py, "#,##0"),
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
 			        "Total Revenue",
-			        "Year to Date",
+			        _subtitle,
 			        "revenue"
 			    )
 		formatString: @
@@ -745,13 +747,14 @@ table Metrics
 			VAR _current = [Total Profit]
 			VAR _py = [Total Profit PY]
 			VAR _yoyPct = [Total Profit YOY %]
+			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
 			RETURN
 			    SVG.HtmlCard(
 			        "$" & FORMAT(_current, "#,##0"),
 			        "$" & FORMAT(_py, "#,##0"),
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
 			        "Total Profit",
-			        "Year to Date",
+			        _subtitle,
 			        "profit"
 			    )
 		formatString: @
@@ -764,13 +767,14 @@ table Metrics
 			VAR _current = [Total Customers]
 			VAR _py = [Total Customers PY]
 			VAR _yoyPct = [Total Customers YOY %]
+			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
 			RETURN
 			    SVG.HtmlCard(
 			        FORMAT(_current, "#,##0"),
 			        FORMAT(_py, "#,##0"),
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
-			        "Total Customers",
-			        "Year to Date",
+			        "Unique Customers",
+			        _subtitle,
 			        "customers"
 			    )
 		formatString: @
@@ -783,13 +787,14 @@ table Metrics
 			VAR _current = [Fact Revenue]
 			VAR _py = [Fact Revenue PY]
 			VAR _yoyPct = [Fact Revenue YOY %]
+			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
 			RETURN
 			    SVG.HtmlCard(
 			        "$" & FORMAT(_current, "#,##0"),
 			        "$" & FORMAT(_py, "#,##0"),
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
-			        "Fact Revenue",
-			        "Year to Date",
+			        "Total Revenue",
+			        _subtitle,
 			        "revenue"
 			    )
 		formatString: @
@@ -802,13 +807,14 @@ table Metrics
 			VAR _current = [Fact Orders]
 			VAR _py = [Fact Orders PY]
 			VAR _yoyPct = [Fact Orders YOY %]
+			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
 			RETURN
 			    SVG.HtmlCard(
 			        FORMAT(_current, "#,##0"),
 			        FORMAT(_py, "#,##0"),
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
-			        "Fact Orders",
-			        "Year to Date",
+			        "Total Orders",
+			        _subtitle,
 			        "orders"
 			    )
 		formatString: @
@@ -821,13 +827,14 @@ table Metrics
 			VAR _current = [Fact Profit]
 			VAR _py = [Fact Profit PY]
 			VAR _yoyPct = [Fact Profit YOY %]
+			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
 			RETURN
 			    SVG.HtmlCard(
 			        "$" & FORMAT(_current, "#,##0"),
 			        "$" & FORMAT(_py, "#,##0"),
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
-			        "Fact Profit",
-			        "Year to Date",
+			        "Total Profit",
+			        _subtitle,
 			        "profit"
 			    )
 		formatString: @
@@ -841,7 +848,8 @@ table Metrics
 			VAR _current = [Fact Selected Metric]
 			VAR _py = [Fact Selected Metric PY]
 			VAR _yoyPct = [Fact Selected Metric YOY %]
-			VAR _title = SWITCH(_selected, "Orders", "Fact Orders", "Revenue", "Fact Revenue", "Profit", "Fact Profit", "Fact Revenue")
+			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
+			VAR _title = SWITCH(_selected, "Orders", "Total Orders", "Revenue", "Total Revenue", "Profit", "Total Profit", "Total Revenue")
 			VAR _icon = SWITCH(_selected, "Orders", "orders", "Revenue", "revenue", "Profit", "profit", "revenue")
 			VAR _currentFmt = SWITCH(_selected, "Orders", FORMAT(_current, "#,##0"), "$" & FORMAT(_current, "#,##0"))
 			VAR _pyFmt = SWITCH(_selected, "Orders", FORMAT(_py, "#,##0"), "$" & FORMAT(_py, "#,##0"))
@@ -851,7 +859,7 @@ table Metrics
 			        _pyFmt,
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
 			        _title,
-			        "Year to Date",
+			        _subtitle,
 			        _icon
 			    )
 		formatString: @

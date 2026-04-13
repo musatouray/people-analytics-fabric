@@ -1643,9 +1643,7 @@ function 'SVG.HtmlCard' =
 		    ".card {width:100%;height:100%;background:linear-gradient(145deg,#ffffff 0%,#f8fafc 100%);" &
 		        "border:1px solid " & _border & ";border-radius:12px;overflow:hidden;position:relative;" &
 		        "display:flex;flex-direction:column;padding:20px 22px 16px} " &
-		    ".bar {position:absolute;top:0;left:0;right:0;height:3px;" &
-		        "background:linear-gradient(90deg," & _accent & " 0%," & _accentLight & " 100%)} " &
-		    ".hdr {display:flex;justify-content:space-between;align-items:flex-start;margin-top:8px;margin-bottom:10px} " &
+		    ".hdr {display:flex;justify-content:space-between;align-items:flex-start;margin-top:0;margin-bottom:5px} " &
 		    ".sub {font-size:11px;font-weight:700;color:" & _accent & ";text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px} " &
 		    ".ttl {font-size:15px;font-weight:700;color:" & _dark & "} " &
 		    ".ico {width:44px;height:44px;border-radius:10px;" &
@@ -1667,7 +1665,6 @@ function 'SVG.HtmlCard' =
 		VAR _html =
 		    "<html xmlns='http://www.w3.org/1999/xhtml'><head><style>" & _css & "</style></head>" &
 		    "<body><div class='card'>" &
-		        "<div class='bar'></div>" &
 		        "<div class='hdr'>" &
 		            "<div><div class='sub'>" & subtitle & "</div><div class='ttl'>" & title & "</div></div>" &
 		            "<div class='ico'>" & _iconSvg & "</div>" &
