@@ -3,9 +3,9 @@
   "name": "039cd68b4eca8a6062a4",
   "position": {
     "x": 1343.0576726578336,
-    "y": 12.735891723479455,
+    "y": 16,
     "z": 1000,
-    "height": 60.206033601902881,
+    "height": 50,
     "width": 493.22635220020436,
     "tabOrder": 1000
   },
@@ -89,7 +89,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "2013L"
+                                "Value": "2012L"
                               }
                             }
                           ]
@@ -494,7 +494,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -512,7 +512,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "7D"
+                  "Value": "25D"
                 }
               }
             }
@@ -538,7 +538,14 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "33D"
                 }
               }
             }

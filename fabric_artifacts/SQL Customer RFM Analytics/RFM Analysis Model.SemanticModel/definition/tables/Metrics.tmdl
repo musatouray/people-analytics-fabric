@@ -414,12 +414,15 @@ table Metrics
 	measure 'Fact Selected Metric PM' =
 			VAR _selected = SELECTEDVALUE('Fact Metric Selector'[Metric])
 			RETURN
-			    SWITCH(
-			        _selected,
-			        "Orders",  [Fact Orders PM],
-			        "Revenue", [Fact Revenue PM],
-			        "Profit",  [Fact Profit PM],
-			        [Fact Revenue PM]
+			    CALCULATE(
+			        SWITCH(
+			            _selected,
+			            "Orders",  [Fact Orders PM],
+			            "Revenue", [Fact Revenue PM],
+			            "Profit",  [Fact Profit PM],
+			            [Fact Revenue PM]
+			        ),
+			        ALL('Fact Metric Selector')
 			    )
 		displayFolder: Fact Time Intelligence
 		lineageTag: d2e3f4a5-b6c7-4d8e-9f01-112233445501
@@ -432,12 +435,15 @@ table Metrics
 	measure 'Fact Selected Metric PY' =
 			VAR _selected = SELECTEDVALUE('Fact Metric Selector'[Metric])
 			RETURN
-			    SWITCH(
-			        _selected,
-			        "Orders",  [Fact Orders PY],
-			        "Revenue", [Fact Revenue PY],
-			        "Profit",  [Fact Profit PY],
-			        [Fact Revenue PY]
+			    CALCULATE(
+			        SWITCH(
+			            _selected,
+			            "Orders",  [Fact Orders PY],
+			            "Revenue", [Fact Revenue PY],
+			            "Profit",  [Fact Profit PY],
+			            [Fact Revenue PY]
+			        ),
+			        ALL('Fact Metric Selector')
 			    )
 		displayFolder: Fact Time Intelligence
 		lineageTag: d2e3f4a5-b6c7-4d8e-9f01-112233445502
@@ -450,12 +456,15 @@ table Metrics
 	measure 'Fact Selected Metric MOM Δ' =
 			VAR _selected = SELECTEDVALUE('Fact Metric Selector'[Metric])
 			RETURN
-			    SWITCH(
-			        _selected,
-			        "Orders",  [Fact Orders MOM Δ],
-			        "Revenue", [Fact Revenue MOM Δ],
-			        "Profit",  [Fact Profit MOM Δ],
-			        [Fact Revenue MOM Δ]
+			    CALCULATE(
+			        SWITCH(
+			            _selected,
+			            "Orders",  [Fact Orders MOM Δ],
+			            "Revenue", [Fact Revenue MOM Δ],
+			            "Profit",  [Fact Profit MOM Δ],
+			            [Fact Revenue MOM Δ]
+			        ),
+			        ALL('Fact Metric Selector')
 			    )
 		displayFolder: Fact Time Intelligence
 		lineageTag: d2e3f4a5-b6c7-4d8e-9f01-112233445503
@@ -468,12 +477,15 @@ table Metrics
 	measure 'Fact Selected Metric YOY Δ' =
 			VAR _selected = SELECTEDVALUE('Fact Metric Selector'[Metric])
 			RETURN
-			    SWITCH(
-			        _selected,
-			        "Orders",  [Fact Orders YOY Δ],
-			        "Revenue", [Fact Revenue YOY Δ],
-			        "Profit",  [Fact Profit YOY Δ],
-			        [Fact Revenue YOY Δ]
+			    CALCULATE(
+			        SWITCH(
+			            _selected,
+			            "Orders",  [Fact Orders YOY Δ],
+			            "Revenue", [Fact Revenue YOY Δ],
+			            "Profit",  [Fact Profit YOY Δ],
+			            [Fact Revenue YOY Δ]
+			        ),
+			        ALL('Fact Metric Selector')
 			    )
 		displayFolder: Fact Time Intelligence
 		lineageTag: d2e3f4a5-b6c7-4d8e-9f01-112233445504
@@ -486,12 +498,15 @@ table Metrics
 	measure 'Fact Selected Metric MOM %' =
 			VAR _selected = SELECTEDVALUE('Fact Metric Selector'[Metric])
 			RETURN
-			    SWITCH(
-			        _selected,
-			        "Orders",  [Fact Orders MOM %],
-			        "Revenue", [Fact Revenue MOM %],
-			        "Profit",  [Fact Profit MOM %],
-			        [Fact Revenue MOM %]
+			    CALCULATE(
+			        SWITCH(
+			            _selected,
+			            "Orders",  [Fact Orders MOM %],
+			            "Revenue", [Fact Revenue MOM %],
+			            "Profit",  [Fact Profit MOM %],
+			            [Fact Revenue MOM %]
+			        ),
+			        ALL('Fact Metric Selector')
 			    )
 		formatString: #,0.00%;-#,0.00%;#,0.00%
 		displayFolder: Fact Time Intelligence
@@ -501,12 +516,15 @@ table Metrics
 	measure 'Fact Selected Metric YOY %' =
 			VAR _selected = SELECTEDVALUE('Fact Metric Selector'[Metric])
 			RETURN
-			    SWITCH(
-			        _selected,
-			        "Orders",  [Fact Orders YOY %],
-			        "Revenue", [Fact Revenue YOY %],
-			        "Profit",  [Fact Profit YOY %],
-			        [Fact Revenue YOY %]
+			    CALCULATE(
+			        SWITCH(
+			            _selected,
+			            "Orders",  [Fact Orders YOY %],
+			            "Revenue", [Fact Revenue YOY %],
+			            "Profit",  [Fact Profit YOY %],
+			            [Fact Revenue YOY %]
+			        ),
+			        ALL('Fact Metric Selector')
 			    )
 		formatString: #,0.00%;-#,0.00%;#,0.00%
 		displayFolder: Fact Time Intelligence

@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "RFM Metric Selector"
+                      "Entity": "Fact Metric Selector"
                     }
                   },
                   "Property": "Metric"
                 }
               },
-              "queryRef": "RFM Metric Selector.Metric",
+              "queryRef": "Fact Metric Selector.Metric",
               "nativeQueryRef": "Metric"
             }
           ]
@@ -42,8 +42,8 @@
                 "Version": 2,
                 "From": [
                   {
-                    "Name": "r",
-                    "Entity": "RFM Metric Selector",
+                    "Name": "f",
+                    "Entity": "Fact Metric Selector",
                     "Type": 0
                   }
                 ],
@@ -56,7 +56,7 @@
                             "Column": {
                               "Expression": {
                                 "SourceRef": {
-                                  "Source": "r"
+                                  "Source": "f"
                                 }
                               },
                               "Property": "Metric"
@@ -756,12 +756,12 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "21d1f0292534c0c53704",
+        "name": "e1d6969ca791d93259cd",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "RFM Metric Selector"
+                "Entity": "Fact Metric Selector"
               }
             },
             "Property": "Metric"
