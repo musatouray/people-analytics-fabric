@@ -68,21 +68,6 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "customers_dark32899996305795265.svg",
-          "path": "customers_dark32899996305795265.svg",
-          "type": "Image"
-        },
-        {
-          "name": "dolar_bills_light03417188652392855.svg",
-          "path": "dolar_bills_light03417188652392855.svg",
-          "type": "Image"
-        },
-        {
-          "name": "dolar_coins_light5315297096875927.svg",
-          "path": "dolar_coins_light5315297096875927.svg",
-          "type": "Image"
-        },
-        {
           "name": "dollar_bills_dark1289867915004953.svg",
           "path": "dollar_bills_dark1289867915004953.svg",
           "type": "Image"
@@ -108,18 +93,8 @@
           "type": "CustomTheme"
         },
         {
-          "name": "shopping_cart_light3312939664036727.svg",
-          "path": "shopping_cart_light3312939664036727.svg",
-          "type": "Image"
-        },
-        {
           "name": "shopping_coins_dark8459916827494449.svg",
           "path": "shopping_coins_dark8459916827494449.svg",
-          "type": "Image"
-        },
-        {
-          "name": "warning_skeleton_light9478209283900223.svg",
-          "path": "warning_skeleton_light9478209283900223.svg",
           "type": "Image"
         }
       ]

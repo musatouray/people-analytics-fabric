@@ -58,6 +58,15 @@
           "dataCategory": "ImageUrl",
           "expression": "SVG.KpiCard([Churn Customers], \"Churn Customers\", \"#,##0\", TRUE, DimDate[FullDateAlternateKey], DimDate[MonthNumberOfYear])",
           "displayFolder": "SVG Cards"
+        },
+        {
+          "name": "Fact AC vs PY Title",
+          "dataType": "Text",
+          "expression": "\nVAR __calendarYear = SELECTEDVALUE(DimDate[CalendarYear])\nVAR _selectedValue = \n    SELECTCOLUMNS(\n        SUMMARIZE(\n            'Param: Fact Metrics', \n            'Param: Fact Metrics'[Param: Fact Metrics], \n            'Param: Fact Metrics'[Param: Fact Metrics Fields], \n            'Param: Fact Metrics'[Param: Fact Metrics Order]\n        ),\n        'Param: Fact Metrics'[Param: Fact Metrics]\n    )\n\nRETURN\n    IF (\n        COUNTROWS(_selectedValue) = 1,\n        SWITCH(\n            _selectedValue,\n            \"Orders\",  __calendarYear & \" Orders vs Previous Year\",\n            \"Revenue\", __calendarYear & \" Revenue vs Previous Year\",\n            \"Profit\",  __calendarYear & \" Profit vs Previous Year\",\n            __calendarYear & \" Revenue vs Previous Year\"\n        )\n    )",
+          "displayFolder": "Fact Titles",
+          "references": {
+            "unrecognizedReferences": true
+          }
         }
       ]
     },

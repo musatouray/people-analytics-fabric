@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "5f99693b7eb1a3cdbed9",
+  "name": "fdb458e000edd04390b3",
   "position": {
-    "x": 874.14529556608989,
-    "y": 419.12661853632392,
-    "z": 6005,
+    "x": 1537.5694735255197,
+    "y": 408.70634348984072,
+    "z": 6007,
     "height": 60.206033601902881,
-    "width": 348.50030988793782,
-    "tabOrder": 6005
+    "width": 262.822492839076,
+    "tabOrder": 6007
   },
   "visual": {
     "visualType": "advancedSlicerVisual",
@@ -20,114 +20,41 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fact Metric Selector"
+                      "Entity": "Param: Fact Metrics"
                     }
                   },
-                  "Property": "Metric"
+                  "Property": "Param: Fact Metrics"
                 }
               },
-              "queryRef": "Fact Metric Selector.Metric",
-              "nativeQueryRef": "Metric"
+              "queryRef": "Param: Fact Metrics.Param: Fact Metrics",
+              "nativeQueryRef": "Param: Fact Metrics"
             }
           ]
         }
       }
     },
     "objects": {
-      "general": [
+      "fillCustom": [
         {
           "properties": {
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "f",
-                    "Entity": "Fact Metric Selector",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "f"
-                                }
-                              },
-                              "Property": "Metric"
-                            }
-                          }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'Revenue'"
-                              }
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          }
-        }
-      ],
-      "layout": [
-        {
-          "properties": {
-            "orientation": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
-                }
-              }
-            },
-            "maxTiles": {
-              "expr": {
-                "Literal": {
-                  "Value": "5L"
+                  "Value": "false"
                 }
               }
             }
+          },
+          "selector": {
+            "id": "interaction:hover"
           }
-        }
-      ],
-      "overFlow": [
+        },
         {
           "properties": {
-            "overFlowDirection": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "value": [
-        {
-          "properties": {
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "10.5D"
-                }
-              }
-            },
-            "horizontalAlignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'center'"
+                  "Value": "false"
                 }
               }
             }
@@ -135,26 +62,25 @@
           "selector": {
             "id": "default"
           }
-        },
+        }
+      ],
+      "outline": [
         {
           "properties": {
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.6
-                    }
-                  }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
           },
           "selector": {
-            "id": "interaction:rest"
+            "id": "default"
           }
-        },
+        }
+      ],
+      "value": [
         {
           "properties": {
             "fontFamily": {
@@ -213,15 +139,83 @@
           "selector": {
             "id": "interaction:hover"
           }
-        }
-      ],
-      "fillCustom": [
+        },
         {
           "properties": {
-            "show": {
+            "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "10.5D"
+                }
+              }
+            },
+            "horizontalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.6
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "interaction:rest"
+          }
+        }
+      ],
+      "shapeCustomRectangle": [
+        {
+          "properties": {
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "10L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "selection:selected"
+          }
+        },
+        {
+          "properties": {
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
                 }
               }
             }
@@ -229,35 +223,38 @@
           "selector": {
             "id": "interaction:hover"
           }
-        },
+        }
+      ],
+      "layout": [
         {
           "properties": {
-            "show": {
+            "orientation": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "2D"
+                }
+              }
+            },
+            "maxTiles": {
+              "expr": {
+                "Literal": {
+                  "Value": "5L"
                 }
               }
             }
-          },
-          "selector": {
-            "id": "default"
           }
         }
       ],
-      "outline": [
+      "overFlow": [
         {
           "properties": {
-            "show": {
+            "overFlowDirection": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "1D"
                 }
               }
             }
-          },
-          "selector": {
-            "id": "default"
           }
         }
       ],
@@ -364,63 +361,6 @@
           }
         }
       ],
-      "selection": [
-        {
-          "properties": {
-            "selectAllCheckboxEnabled": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "shapeCustomRectangle": [
-        {
-          "properties": {
-            "rectangleRoundedCurve": {
-              "expr": {
-                "Literal": {
-                  "Value": "10L"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        },
-        {
-          "properties": {
-            "rectangleRoundedCurve": {
-              "expr": {
-                "Literal": {
-                  "Value": "0L"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "selection:selected"
-          }
-        },
-        {
-          "properties": {
-            "rectangleRoundedCurve": {
-              "expr": {
-                "Literal": {
-                  "Value": "0L"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "interaction:hover"
-          }
-        }
-      ],
       "background": [
         {
           "properties": {
@@ -463,47 +403,76 @@
             "hierarchyMatching": 1
           }
         }
-      ]
-    },
-    "visualContainerObjects": {
-      "border": [
+      ],
+      "selection": [
         {
           "properties": {
-            "show": {
+            "selectAllCheckboxEnabled": {
               "expr": {
                 "Literal": {
                   "Value": "false"
                 }
               }
             },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#F3F2F1'"
-                    }
-                  }
-                }
-              }
-            },
-            "radius": {
+            "strictSingleSelect": {
               "expr": {
                 "Literal": {
-                  "Value": "7D"
-                }
-              }
-            },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
+                  "Value": "true"
                 }
               }
             }
           }
         }
       ],
+      "general": [
+        {
+          "properties": {
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "p",
+                    "Entity": "Param: Fact Metrics",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "p"
+                                }
+                              },
+                              "Property": "Param: Fact Metrics Fields"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'''Metrics''[Fact Revenue]'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
       "title": [
         {
           "properties": {
@@ -543,37 +512,6 @@
               "expr": {
                 "Literal": {
                   "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "background": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FFFFFF'"
-                    }
-                  }
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
                 }
               }
             }
@@ -648,6 +586,37 @@
           }
         }
       ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "33D"
+                }
+              }
+            }
+          }
+        }
+      ],
       "padding": [
         {
           "properties": {
@@ -676,6 +645,44 @@
               "expr": {
                 "Literal": {
                   "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F3F2F1'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "25D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
                 }
               }
             }
@@ -756,15 +763,15 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "e1d6969ca791d93259cd",
+        "name": "8dbf72d27ceb6c4b42c5",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Fact Metric Selector"
+                "Entity": "Param: Fact Metrics"
               }
             },
-            "Property": "Metric"
+            "Property": "Param: Fact Metrics"
           }
         },
         "type": "Categorical"

@@ -6,7 +6,7 @@
     "y": 61.363841940401009,
     "z": 6002,
     "height": 347.3425015494397,
-    "width": 1530.6226234945309,
+    "width": 1505.150840047572,
     "tabOrder": 6002
   },
   "visual": {
@@ -53,11 +53,11 @@
                       "Entity": "Metrics"
                     }
                   },
-                  "Property": "HTML Card Fact Profit"
+                  "Property": "HTML Card Fact Revenue"
                 }
               },
-              "queryRef": "Metrics.HTML Card Fact Profit",
-              "nativeQueryRef": " 1",
+              "queryRef": "Metrics.HTML Card Fact Revenue",
+              "nativeQueryRef": " 2",
               "displayName": " "
             },
             {
@@ -68,11 +68,11 @@
                       "Entity": "Metrics"
                     }
                   },
-                  "Property": "HTML Card Fact Selected"
+                  "Property": "HTML Card Fact Profit"
                 }
               },
-              "queryRef": "Metrics.HTML Card Fact Selected",
-              "nativeQueryRef": " 2",
+              "queryRef": "Metrics.HTML Card Fact Profit",
+              "nativeQueryRef": " 1",
               "displayName": " "
             }
           ]
@@ -88,7 +88,7 @@
                     "Entity": "Metrics"
                   }
                 },
-                "Property": "HTML Card Total Revenue"
+                "Property": "HTML Card Fact Profit"
               }
             },
             "direction": "Descending"
@@ -286,7 +286,7 @@
         "type": "Advanced"
       },
       {
-        "name": "344c1447a91003b82e0e",
+        "name": "d12d7e59182218a0e2a2",
         "field": {
           "Measure": {
             "Expression": {
@@ -294,7 +294,7 @@
                 "Entity": "Metrics"
               }
             },
-            "Property": "HTML Card Fact Selected"
+            "Property": "HTML Card Fact Revenue"
           }
         },
         "type": "Advanced"
