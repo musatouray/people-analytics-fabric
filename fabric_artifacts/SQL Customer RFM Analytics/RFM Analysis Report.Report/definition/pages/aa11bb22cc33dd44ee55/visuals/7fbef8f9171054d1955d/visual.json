@@ -10,10 +10,10 @@
     "tabOrder": 9001
   },
   "visual": {
-    "visualType": "htmlContent443BE3AD55E043BF878BED274D3A6855",
+    "visualType": "tableEx",
     "query": {
       "queryState": {
-        "content": {
+        "Values": {
           "projections": [
             {
               "field": {
@@ -28,47 +28,61 @@
               },
               "queryRef": "Metrics.HTML Card Total Orders",
               "nativeQueryRef": "HTML Card Total Orders"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Metrics"
+                    }
+                  },
+                  "Property": "HTML Card Total Revenue"
+                }
+              },
+              "queryRef": "Metrics.HTML Card Total Revenue",
+              "nativeQueryRef": "HTML Card Total Revenue"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Metrics"
+                    }
+                  },
+                  "Property": "HTML Card Total Profit"
+                }
+              },
+              "queryRef": "Metrics.HTML Card Total Profit",
+              "nativeQueryRef": "HTML Card Total Profit"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Metrics"
-                  }
-                },
-                "Property": "HTML Card Total Orders"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
-        "isDefaultSort": true
       }
     },
-    "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "b6f69bec384e82ca7800",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Metrics"
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "imageHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "300D"
+                }
               }
             },
-            "Property": "HTML Card Total Orders"
+            "imageWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "360D"
+                }
+              }
+            }
           }
-        },
-        "type": "Advanced"
-      }
-    ]
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
   }
 }

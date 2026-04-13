@@ -511,7 +511,7 @@ table Metrics
 		formatString: @
 		displayFolder: HTML Cards
 		lineageTag: 29a9770f-a174-4d5b-9b98-bb2d2f3f78a0
-		dataCategory: WebUrl
+		dataCategory: ImageUrl
 
 	/// HTML KPI card for total revenue using the semantic-model HTML.KpiCard UDF.
 	measure 'HTML Card Total Revenue' = ```
@@ -533,7 +533,7 @@ table Metrics
 		formatString: @
 		displayFolder: HTML Cards
 		lineageTag: 0ee92b22-7e05-45c0-8fc4-3f4c45c77fd0
-		dataCategory: WebUrl
+		dataCategory: ImageUrl
 
 	/// HTML KPI card for total profit using the semantic-model HTML.KpiCard UDF.
 	measure 'HTML Card Total Profit' = ```
@@ -555,7 +555,7 @@ table Metrics
 		formatString: @
 		displayFolder: HTML Cards
 		lineageTag: 2f0203ee-98d1-40bc-bc47-af97efa6c2c7
-		dataCategory: WebUrl
+		dataCategory: ImageUrl
 
 	/// Gross profit as a % of internet sales revenue. Higher is better.
 	measure 'IS Gross Margin %' = DIVIDE([Fact Profit], [Fact Revenue])

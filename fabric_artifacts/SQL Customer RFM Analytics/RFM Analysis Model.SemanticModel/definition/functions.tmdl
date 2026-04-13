@@ -1611,93 +1611,74 @@ function 'HTML.KpiCard' =
 		    title: STRING,
 		    iconType: STRING
 		) =>
-		VAR _primaryColor = "#1d1f21"
-		VAR _accentColor = "#FF6600"
+		// ── Configuration ───────────────────────────────────────────────────────
+		VAR _w = "380"
+		VAR _h = "300"
+		VAR _accent = "#FF6600"
 		VAR _accentLight = "#ff983f"
-		VAR _secondaryColor = "#444648"
-		VAR _borderColor = "#cccccc"
+		VAR _dark = "#1d1f21"
+		VAR _mid = "#444648"
+		VAR _border = "#cccccc"
+		// ── Status logic ────────────────────────────────────────────────────────
 		VAR _isPositive = yoyChange >= 0
 		VAR _statusColor = IF(_isPositive, "#4CAF50", "#E53935")
-		VAR _statusIndicator = IF(_isPositive, "On Track", "Off Track")
-		VAR _iconOrders = "<path d='M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z'></path><line x1='3' y1='6' x2='21' y2='6'></line><path d='M16 10a4 4 0 0 1-8 0'></path>"
-		VAR _iconRevenue = "<line x1='12' y1='1' x2='12' y2='23'></line><path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'></path>"
-		VAR _iconProfit = "<line x1='18' y1='20' x2='18' y2='10'></line><line x1='12' y1='20' x2='12' y2='4'></line><line x1='6' y1='20' x2='6' y2='14'></line>"
-		VAR _iconSvg = SWITCH(iconType, "orders", _iconOrders, "revenue", _iconRevenue, "profit", _iconProfit, _iconOrders)
-		VAR _cardWidth = "380px"
-		VAR _cardHeight = "280px"
-		VAR _nl = UNICHAR(10)
+		VAR _statusLabel = IF(_isPositive, "On Track", "Off Track")
+		// ── Icon SVG paths (Feather icons, stroke-based) ─────────────────────
+		VAR _iconOrders = "<path d='M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z'/><line x1='3' y1='6' x2='21' y2='6'/><path d='M16 10a4 4 0 0 1-8 0'/>"
+		VAR _iconRevenue = "<line x1='12' y1='1' x2='12' y2='23'/><path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/>"
+		VAR _iconProfit = "<line x1='18' y1='20' x2='18' y2='10'/><line x1='12' y1='20' x2='12' y2='4'/><line x1='6' y1='20' x2='6' y2='14'/>"
+		VAR _iconPaths = SWITCH(iconType, "orders", _iconOrders, "revenue", _iconRevenue, "profit", _iconProfit, _iconOrders)
+		VAR _iconSvg =
+		    "<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24'" &
+		    " fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>" &
+		    _iconPaths & "</svg>"
+		// ── CSS (single-line, semicolons as rule separators) ─────────────────
+		VAR _css =
+		    "* {box-sizing:border-box;margin:0;padding:0} " &
+		    "body {font-family:Segoe UI,sans-serif;width:" & _w & "px;height:" & _h & "px;overflow:hidden;margin:0;background:transparent} " &
+		    ".card {width:100%;height:100%;background:linear-gradient(145deg,#ffffff 0%,#f8fafc 100%);" &
+		        "border:1px solid " & _border & ";border-radius:12px;overflow:hidden;position:relative;" &
+		        "display:flex;flex-direction:column;padding:20px 22px 16px} " &
+		    ".bar {position:absolute;top:0;left:0;right:0;height:3px;" &
+		        "background:linear-gradient(90deg," & _accent & " 0%," & _accentLight & " 100%)} " &
+		    ".hdr {display:flex;justify-content:space-between;align-items:flex-start;margin-top:8px;margin-bottom:10px} " &
+		    ".sub {font-size:11px;font-weight:700;color:" & _accent & ";text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px} " &
+		    ".ttl {font-size:15px;font-weight:700;color:" & _dark & "} " &
+		    ".ico {width:44px;height:44px;border-radius:10px;" &
+		        "background:linear-gradient(135deg," & _accent & " 0%," & _accentLight & " 100%);" &
+		        "display:flex;align-items:center;justify-content:center;flex-shrink:0} " &
+		    ".val {font-size:2.6rem;font-weight:800;color:" & _dark & ";line-height:1;flex:1;display:flex;align-items:center} " &
+		    ".ul {height:3px;width:55px;background:linear-gradient(90deg," & _accent & " 0%,transparent 100%);border-radius:2px;margin-bottom:12px} " &
+		    ".ftr {border-top:1px dashed #e2e8f0;padding-top:12px;display:flex;justify-content:space-between;align-items:center} " &
+		    ".m {text-align:center} " &
+		    ".mv {font-size:13px;font-weight:700;color:" & _accent & "} " &
+		    ".ml {font-size:11px;color:" & _mid & ";font-weight:500} " &
+		    ".st {font-size:12px;font-weight:700;color:" & _statusColor & ";display:flex;align-items:center;gap:5px} " &
+		    ".dt {width:8px;height:8px;border-radius:50%;background:" & _statusColor & ";display:inline-block;flex-shrink:0}"
+		// ── HTML body ────────────────────────────────────────────────────────
 		VAR _html =
-		    "<!DOCTYPE html>" & _nl &
-		    "<html lang='en'>" & _nl &
-		    "<head>" & _nl &
-		    "    <meta charset='UTF-8'>" & _nl &
-		    "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>" & _nl &
-		    "    <style>" & _nl &
-		    "        * { box-sizing: border-box; margin: 0; padding: 0; }" & _nl &
-		    "        html, body { margin: 0; padding: 0; overflow: hidden; font-family: 'Segoe UI', sans-serif; background: transparent; }" & _nl &
-		    "        .card-container { width: " & _cardWidth & "; height: " & _cardHeight & "; margin: 0 auto; display: flex; align-items: center; justify-content: center; padding: 10px; }" & _nl &
-		    "        .kpi-card { background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%); border-radius: 12px; border: 1px solid " & _borderColor & "; overflow: hidden; position: relative; width: 100%; height: 100%; transition: all 0.3s ease; }" & _nl &
-		    "        .kpi-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); border-color: " & _accentColor & "; }" & _nl &
-		    "        .kpi-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, " & _accentColor & ", " & _accentLight & "); }" & _nl &
-		    "        .card-content { padding: 24px; height: 100%; display: flex; flex-direction: column; }" & _nl &
-		    "        .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }" & _nl &
-		    "        .title-section { flex: 1; }" & _nl &
-		    "        .card-subtitle { font-size: 14px; font-weight: 600; color: " & _accentColor & "; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }" & _nl &
-		    "        .card-title { font-size: 16px; font-weight: 700; color: " & _primaryColor & "; }" & _nl &
-		    "        .icon-wrapper { width: 48px; height: 48px; border-radius: 10px; background: linear-gradient(135deg, " & _accentColor & " 0%, " & _accentLight & " 100%); display: flex; align-items: center; justify-content: center; }" & _nl &
-		    "        .card-main { flex: 1; display: flex; flex-direction: column; justify-content: center; }" & _nl &
-		    "        .card-value { font-size: 2.8rem; font-weight: 800; color: " & _primaryColor & "; line-height: 1; margin-bottom: 12px; position: relative; }" & _nl &
-		    "        .value-decoration { position: absolute; bottom: -4px; left: 0; width: 60px; height: 3px; background: linear-gradient(90deg, " & _accentColor & " 0%, transparent 100%); border-radius: 2px; }" & _nl &
-		    "        .card-footer { display: flex; flex-direction: column; gap: 12px; padding-top: 16px; border-top: 1px dashed #e2e8f0; }" & _nl &
-		    "        .performance-metrics { display: flex; justify-content: space-between; align-items: center; }" & _nl &
-		    "        .metric-item { display: flex; flex-direction: column; align-items: center; font-size: 14px; }" & _nl &
-		    "        .metric-value { font-weight: 700; color: " & _accentColor & "; margin-bottom: 2px; }" & _nl &
-		    "        .metric-label { color: " & _secondaryColor & "; font-weight: 500; font-size: 12px; }" & _nl &
-		    "        .status-indicator { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: " & _statusColor & "; }" & _nl &
-		    "        .status-dot { width: 8px; height: 8px; border-radius: 50%; background: " & _statusColor & "; }" & _nl &
-		    "    </style>" & _nl &
-		    "</head>" & _nl &
-		    "<body>" & _nl &
-		    "    <div class='card-container'>" & _nl &
-		    "        <div class='kpi-card'>" & _nl &
-		    "            <div class='card-content'>" & _nl &
-		    "                <div class='card-top'>" & _nl &
-		    "                    <div class='title-section'>" & _nl &
-		    "                        <div class='card-subtitle'>" & subtitle & "</div>" & _nl &
-		    "                        <div class='card-title'>" & title & "</div>" & _nl &
-		    "                    </div>" & _nl &
-		    "                    <div class='icon-wrapper'>" & _nl &
-		    "                        <svg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'>" & _iconSvg & "</svg>" & _nl &
-		    "                    </div>" & _nl &
-		    "                </div>" & _nl &
-		    "                <div class='card-main'>" & _nl &
-		    "                    <div class='card-value'>" & _nl &
-		    "                        " & currentValueFmt & _nl &
-		    "                        <div class='value-decoration'></div>" & _nl &
-		    "                    </div>" & _nl &
-		    "                </div>" & _nl &
-		    "                <div class='card-footer'>" & _nl &
-		    "                    <div class='performance-metrics'>" & _nl &
-		    "                        <div class='metric-item'>" & _nl &
-		    "                            <div class='metric-value'>" & priorYearFmt & "</div>" & _nl &
-		    "                            <div class='metric-label'>Prior Year</div>" & _nl &
-		    "                        </div>" & _nl &
-		    "                        <div class='metric-item'>" & _nl &
-		    "                            <div class='metric-value'>" & yoyPercentFmt & "</div>" & _nl &
-		    "                            <div class='metric-label'>YoY Change</div>" & _nl &
-		    "                        </div>" & _nl &
-		    "                        <div class='status-indicator'>" & _nl &
-		    "                            <div class='status-dot'></div>" & _nl &
-		    "                            <span>" & _statusIndicator & "</span>" & _nl &
-		    "                        </div>" & _nl &
-		    "                    </div>" & _nl &
-		    "                </div>" & _nl &
-		    "            </div>" & _nl &
-		    "        </div>" & _nl &
-		    "    </div>" & _nl &
-		    "</body>" & _nl &
-		    "</html>"
+		    "<html xmlns='http://www.w3.org/1999/xhtml'><head><style>" & _css & "</style></head>" &
+		    "<body><div class='card'>" &
+		        "<div class='bar'></div>" &
+		        "<div class='hdr'>" &
+		            "<div><div class='sub'>" & subtitle & "</div><div class='ttl'>" & title & "</div></div>" &
+		            "<div class='ico'>" & _iconSvg & "</div>" &
+		        "</div>" &
+		        "<div class='val'>" & currentValueFmt & "</div>" &
+		        "<div class='ul'></div>" &
+		        "<div class='ftr'>" &
+		            "<div class='m'><div class='mv'>" & priorYearFmt & "</div><div class='ml'>Prior Year</div></div>" &
+		            "<div class='m'><div class='mv'>" & yoyPercentFmt & "</div><div class='ml'>YoY Change</div></div>" &
+		            "<div class='st'><span class='dt'></span>" & _statusLabel & "</div>" &
+		        "</div>" &
+		    "</div></body></html>"
+		// ── Wrap in SVG foreignObject data URI ───────────────────────────────
+		VAR _svg =
+		    "<svg xmlns='http://www.w3.org/2000/svg' width='" & _w & "' height='" & _h & "'>" &
+		    "<foreignObject x='0' y='0' width='" & _w & "' height='" & _h & "'>" &
+		    _html &
+		    "</foreignObject></svg>"
 		RETURN
-		    _html
+		    "data:image/svg+xml;utf8, " & _svg
 	lineageTag: 12eb0ddf-8632-4361-8a25-0e6665b86527
 
