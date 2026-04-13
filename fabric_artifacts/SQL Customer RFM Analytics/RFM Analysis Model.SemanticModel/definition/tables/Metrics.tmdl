@@ -411,6 +411,7 @@ table Metrics
 		lineageTag: c1d2e3f4-a5b6-4c7d-8e9f-001122334418
 
 	/// Fact Selected Metric in the previous month — follows the active Fact Metric Selector choice.
+	/// Uses CALCULATE with ALL('Fact Metric Selector') to escape the calculation group override.
 	measure 'Fact Selected Metric PM' =
 			VAR _selected = SELECTEDVALUE('Fact Metric Selector'[Metric])
 			RETURN
@@ -431,7 +432,9 @@ table Metrics
 				VAR _s = SELECTEDVALUE('Fact Metric Selector'[Metric])
 				RETURN SWITCH(_s, "Orders", "#,0", "Revenue", "$#,##0.00", "Profit", "$#,##0.00", "$#,##0.00")
 
-	/// Fact Selected Metric in the same period last year — follows the active Fact Metric Selector choice. Use as the PY series on the column chart.
+	/// Fact Selected Metric in the same period last year — follows the active Fact Metric Selector choice.
+	/// Uses CALCULATE with ALL('Fact Metric Selector') to escape the calculation group override.
+	/// Use this as the PY series on the column chart — NOT [Fact Revenue PY] directly.
 	measure 'Fact Selected Metric PY' =
 			VAR _selected = SELECTEDVALUE('Fact Metric Selector'[Metric])
 			RETURN
