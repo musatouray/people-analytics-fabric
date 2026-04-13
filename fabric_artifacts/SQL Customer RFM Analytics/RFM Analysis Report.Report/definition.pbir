@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json",
   "version": "4.0",
   "datasetReference": {
-    "byPath": {
-      "path": "../RFM Analysis Model.SemanticModel"
+    "byConnection": {
+      "connectionString": "Data Source=\"powerbi://api.powerbi.com/v1.0/myorg/Fabric Dev Lab\";initial catalog=\"RFM Analysis Model\";access mode=readonly;integrated security=ClaimsToken;semanticmodelid=730516c8-16bd-4d66-9213-306f9b70d47c"
     }
   }
 }
