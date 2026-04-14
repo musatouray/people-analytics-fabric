@@ -5,8 +5,8 @@
     "x": 339.23784317995279,
     "y": 61.363841940401009,
     "z": 6002,
-    "height": 347.3425015494397,
-    "width": 1505.150840047572,
+    "height": 368.18305164240604,
+    "width": 1531.7804318330291,
     "tabOrder": 6002
   },
   "visual": {
@@ -74,6 +74,21 @@
               "queryRef": "Metrics.HTML Card Fact Profit",
               "nativeQueryRef": " 1",
               "displayName": " "
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Metrics"
+                    }
+                  },
+                  "Property": "HTML Card Fact Gross Margin"
+                }
+              },
+              "queryRef": "Metrics.HTML Card Fact Gross Margin",
+              "nativeQueryRef": " 4",
+              "displayName": " "
             }
           ]
         }
@@ -88,10 +103,10 @@
                     "Entity": "Metrics"
                   }
                 },
-                "Property": "HTML Card Fact Profit"
+                "Property": "HTML Card Fact Gross Margin"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ]
       }
@@ -295,6 +310,20 @@
               }
             },
             "Property": "HTML Card Fact Revenue"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7229727900366a887197",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Metrics"
+              }
+            },
+            "Property": "HTML Card Fact Gross Margin"
           }
         },
         "type": "Advanced"
