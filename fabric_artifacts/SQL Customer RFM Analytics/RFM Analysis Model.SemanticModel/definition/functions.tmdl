@@ -1,4 +1,4 @@
-﻿/// Default number format string for all time intelligence measures
+/// Default number format string for all time intelligence measures
 function 'XU.TMDL.TimeIntelligence.Config.NumberFormat' = () => "#,0"
 	lineageTag: 34bbbbdf-c2ea-4af1-9f5b-0b2f06a6d6f1
 

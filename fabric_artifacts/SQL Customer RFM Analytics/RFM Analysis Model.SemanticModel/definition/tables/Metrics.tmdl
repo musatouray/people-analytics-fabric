@@ -1,4 +1,4 @@
-﻿/// Virtual table that holds all DAX measures. No data rows — only used to organise measures in the field list.
+/// Virtual table that holds all DAX measures. No data rows — only used to organise measures in the field list.
 table Metrics
 	lineageTag: 1a487961-fb03-477f-afbc-73197a0e69dd
 
