@@ -871,6 +871,12 @@ table Metrics
 		displayFolder: Fact Time Intelligence
 		lineageTag: c1d2e3f4-a5b6-4c7d-8e9f-001122334418
 
+	/// Gross margin % in the same period last year.
+	measure 'Fact Gross Margin % PY' = CALCULATE([Fact Gross Margin %], DATEADD('DimDate'[FullDateAlternateKey], -1, YEAR))
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Fact Time Intelligence
+		lineageTag: c1d2e3f4-a5b6-4c7d-8e9f-001122334420
+
 	/// Fact Selected Metric in the same period last year — follows the active Fact Metric Selector choice.
 	/// Uses CALCULATE with ALL('Fact Metric Selector') to escape the calculation group override.
 	/// Use this as the PY series on the column chart — NOT [Fact Revenue PY] directly.
