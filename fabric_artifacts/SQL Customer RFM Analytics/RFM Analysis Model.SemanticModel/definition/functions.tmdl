@@ -1611,7 +1611,7 @@ function 'SVG.HtmlCard' =
 		    iconType: STRING VAL
 		) =>
 		// ── Configuration ───────────────────────────────────────────────────────
-		VAR _w = "380"
+		VAR _w = "350"
 		VAR _h = "230"
 		VAR _accent = "#FF6600"
 		VAR _accentLight = "#ff983f"

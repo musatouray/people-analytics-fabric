@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "241ddea308bc84ee8c1e",
   "position": {
-    "x": 339.23784317995279,
+    "x": 338,
     "y": 69.468500309887943,
     "z": 6002,
-    "height": 284.82085127054057,
+    "height": 282,
     "width": 1513.255498417059,
     "tabOrder": 6002
   },
@@ -103,10 +103,10 @@
                     "Entity": "Metrics"
                   }
                 },
-                "Property": "HTML Card Fact Revenue"
+                "Property": "HTML Card Fact Gross Margin"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ]
       }
