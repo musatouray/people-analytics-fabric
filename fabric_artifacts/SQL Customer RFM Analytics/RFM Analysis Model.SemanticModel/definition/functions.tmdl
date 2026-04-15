@@ -1648,14 +1648,15 @@ function 'SVG.HtmlCard' =
 		    "body {font-family:Segoe UI,sans-serif;width:" & _w & "px;height:" & _h & "px;overflow:hidden;margin:0;background:transparent} " &
 		    ".card {width:100%;height:100%;background:linear-gradient(145deg,#ffffff 0%,#f8fafc 100%);" &
 		        "border:1px solid " & _border & ";border-radius:12px;overflow:hidden;position:relative;" &
-		        "display:flex;flex-direction:column;padding:10px 22px 4px} " &
+		        "display:flex;flex-direction:column;padding:20px 22px 20px} " &
 		    ".hdr {display:flex;justify-content:space-between;align-items:flex-start;margin-top:0;margin-bottom:8px} " &
 		    ".sub {font-size:11px;font-weight:700;color:" & _accent & ";text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px} " &
 		    ".ttl {font-size:15px;font-weight:700;color:" & _dark & "} " &
 		    ".ico {width:44px;height:44px;border-radius:10px;" &
 		        "background:linear-gradient(135deg," & _accent & " 0%," & _accentLight & " 100%);" &
 		        "display:flex;align-items:center;justify-content:center;flex-shrink:0} " &
-		    ".val {font-size:35px;font-weight:800;color:" & _dark & ";line-height:1;margin:14px 0 35px;display:flex;align-items:center} " &
+		    ".val {font-size:35px;font-weight:600;color:" & _dark & ";line-height:1;margin:auto 0;display:flex;align-items:center} " &
+		    ".pgw {margin-top:auto} " &
 		    ".pg {margin-bottom:8px} " &
 		    ".pg-t {position:relative;height:8px;border-radius:4px;background:" & _progLight & "} " &
 		    ".pg-f {position:absolute;top:0;left:0;height:100%;border-radius:4px;background:" & _progColor & "} " &
@@ -1671,11 +1672,11 @@ function 'SVG.HtmlCard' =
 		            "<div class='ico'>" & _iconSvg & "</div>" &
 		        "</div>" &
 		        "<div class='val'>" & currentValueFmt & "</div>" &
-		        "<div class='pg'><div class='pg-t'>" &
+		        "<div class='pgw'><div class='pg'><div class='pg-t'>" &
 		            "<div class='pg-f' style='width:" & _progWidth & "%'></div>" &
 		            "<div class='pg-th' style='left:" & _progWidth & "%'></div>" &
 		        "</div></div>" &
-		        "<div class='pg-lbl'>" & _pgLabel & "</div>" &
+		        "<div class='pg-lbl'>" & _pgLabel & "</div></div>" &
 		    "</div></body></html>"
 		// ── Wrap in SVG foreignObject data URI ───────────────────────────────
 		VAR _svg =
