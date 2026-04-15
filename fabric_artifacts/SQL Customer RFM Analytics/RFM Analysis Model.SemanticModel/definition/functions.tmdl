@@ -1612,7 +1612,7 @@ function 'SVG.HtmlCard' =
 		) =>
 		// ── Configuration ───────────────────────────────────────────────────────
 		VAR _w = "380"
-		VAR _h = "300"
+		VAR _h = "230"
 		VAR _accent = "#FF6600"
 		VAR _accentLight = "#ff983f"
 		VAR _dark = "#1d1f21"
@@ -1649,19 +1649,19 @@ function 'SVG.HtmlCard' =
 		    ".card {width:100%;height:100%;background:linear-gradient(145deg,#ffffff 0%,#f8fafc 100%);" &
 		        "border:1px solid " & _border & ";border-radius:12px;overflow:hidden;position:relative;" &
 		        "display:flex;flex-direction:column;padding:20px 22px 16px} " &
-		    ".hdr {display:flex;justify-content:space-between;align-items:flex-start;margin-top:0;margin-bottom:5px} " &
+		    ".hdr {display:flex;justify-content:space-between;align-items:flex-start;margin-top:0;margin-bottom:12px} " &
 		    ".sub {font-size:11px;font-weight:700;color:" & _accent & ";text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px} " &
 		    ".ttl {font-size:15px;font-weight:700;color:" & _dark & "} " &
 		    ".ico {width:44px;height:44px;border-radius:10px;" &
 		        "background:linear-gradient(135deg," & _accent & " 0%," & _accentLight & " 100%);" &
 		        "display:flex;align-items:center;justify-content:center;flex-shrink:0} " &
-		    ".val {font-size:2.6rem;font-weight:800;color:" & _dark & ";line-height:1;margin:8px 0 10px;display:flex;align-items:center} " &
-		    ".pg {margin-bottom:12px} " &
+		    ".val {font-size:2.6rem;font-weight:800;color:" & _dark & ";line-height:1;margin:20px 0 18px;display:flex;align-items:center} " &
+		    ".pg {margin-bottom:10px} " &
 		    ".pg-t {position:relative;height:8px;border-radius:4px;background:" & _progLight & "} " &
 		    ".pg-f {position:absolute;top:0;left:0;height:100%;border-radius:4px;background:" & _progColor & "} " &
 		    ".pg-th {position:absolute;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;" &
 		        "border-radius:50%;background:" & _progColor & ";border:3px solid white;box-shadow:0 1px 4px rgba(0,0,0,.25)} " &
-		    ".pg-lbl {font-size:10px;color:#444648;line-height:1.5;margin-top:5px;margin-bottom:8px}"
+		    ".pg-lbl {font-size:10px;color:#444648;line-height:1.5;margin-top:6px}"
 		// ── HTML body ────────────────────────────────────────────────────────
 		VAR _html =
 		    "<html xmlns='http://www.w3.org/1999/xhtml'><head><style>" & _css & "</style></head>" &
