@@ -665,8 +665,6 @@ table Metrics
 			VAR _py = [Total Orders PY]
 			VAR _yoyPct = [Total Orders YOY %]
 			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
-			VAR _topBullets = CONCATENATEX(ADDCOLUMNS(TOPN(3, VALUES(DimProductSubcategory[EnglishProductSubcategoryName]), CALCULATE([Total Orders]), DESC), "@pct", DIVIDE(CALCULATE([Total Orders]), _current)), "<li><span class='bn'>" & DimProductSubcategory[EnglishProductSubcategoryName] & "</span><span class='bp'>" & FORMAT([@pct], "0.0%") & "</span></li>", "", [@pct], DESC)
-			VAR _bulletHtml = "<div class='bt'>Top Subcategories by Orders</div><ul>" & _topBullets & "</ul>"
 			RETURN
 			    SVG.HtmlCard(
 			        FORMAT(_current, "#,##0"),
@@ -674,8 +672,7 @@ table Metrics
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
 			        "Total Orders",
 			        _subtitle,
-			        "orders",
-			        _bulletHtml
+			        "orders"
 			    )
 		formatString: @
 		displayFolder: HTML Cards
@@ -688,8 +685,6 @@ table Metrics
 			VAR _py = [Total Revenue PY]
 			VAR _yoyPct = [Total Revenue YOY %]
 			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
-			VAR _topBullets = CONCATENATEX(ADDCOLUMNS(TOPN(3, VALUES(DimProductSubcategory[EnglishProductSubcategoryName]), CALCULATE([Total Revenue]), DESC), "@pct", DIVIDE(CALCULATE([Total Revenue]), _current)), "<li><span class='bn'>" & DimProductSubcategory[EnglishProductSubcategoryName] & "</span><span class='bp'>" & FORMAT([@pct], "0.0%") & "</span></li>", "", [@pct], DESC)
-			VAR _bulletHtml = "<div class='bt'>Top Subcategories by Revenue</div><ul>" & _topBullets & "</ul>"
 			RETURN
 			    SVG.HtmlCard(
 			        "$" & FORMAT(_current, "#,##0"),
@@ -697,8 +692,7 @@ table Metrics
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
 			        "Total Revenue",
 			        _subtitle,
-			        "revenue",
-			        _bulletHtml
+			        "revenue"
 			    )
 		formatString: @
 		displayFolder: HTML Cards
@@ -711,8 +705,6 @@ table Metrics
 			VAR _py = [Total Profit PY]
 			VAR _yoyPct = [Total Profit YOY %]
 			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
-			VAR _topBullets = CONCATENATEX(ADDCOLUMNS(TOPN(3, VALUES(DimProductSubcategory[EnglishProductSubcategoryName]), CALCULATE([Total Profit]), DESC), "@pct", DIVIDE(CALCULATE([Total Profit]), _current)), "<li><span class='bn'>" & DimProductSubcategory[EnglishProductSubcategoryName] & "</span><span class='bp'>" & FORMAT([@pct], "0.0%") & "</span></li>", "", [@pct], DESC)
-			VAR _bulletHtml = "<div class='bt'>Top Subcategories by Profit</div><ul>" & _topBullets & "</ul>"
 			RETURN
 			    SVG.HtmlCard(
 			        "$" & FORMAT(_current, "#,##0"),
@@ -720,8 +712,7 @@ table Metrics
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
 			        "Total Profit",
 			        _subtitle,
-			        "profit",
-			        _bulletHtml
+			        "profit"
 			    )
 		formatString: @
 		displayFolder: HTML Cards
@@ -750,9 +741,6 @@ table Metrics
 			VAR _py = [Total Customers PY]
 			VAR _yoyPct = [Total Customers YOY %]
 			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
-			VAR _totalRev = [Fact Revenue]
-VAR _topBullets = CONCATENATEX(ADDCOLUMNS(TOPN(3, VALUES(DimCustomer[CustomerKey]), CALCULATE([Fact Revenue]), DESC), "@nm", CALCULATE(MAX(DimCustomer[FirstName]) & " " & MAX(DimCustomer[LastName])), "@pct", DIVIDE(CALCULATE([Fact Revenue]), _totalRev)), "<li><span class='bn'>" & [@nm] & "</span><span class='bp'>" & FORMAT([@pct], "0.0%") & "</span></li>", "", [@pct], DESC)
-VAR _bulletHtml = "<div class='bt'>Top Customers by Revenue</div><ul>" & _topBullets & "</ul>"
 			RETURN
 			    SVG.HtmlCard(
 			        FORMAT(_current, "#,##0"),
@@ -760,8 +748,7 @@ VAR _bulletHtml = "<div class='bt'>Top Customers by Revenue</div><ul>" & _topBul
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
 			        "Unique Customers",
 			        _subtitle,
-			        "customers",
-			        _bulletHtml
+			        "customers"
 			    )
 		formatString: @
 		displayFolder: HTML Cards
@@ -946,8 +933,6 @@ VAR _bulletHtml = "<div class='bt'>Top Customers by Revenue</div><ul>" & _topBul
 			VAR _py = [Fact Revenue PY]
 			VAR _yoyPct = [Fact Revenue YOY %]
 			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
-			VAR _topBullets = CONCATENATEX(ADDCOLUMNS(TOPN(3, VALUES(DimProductSubcategory[EnglishProductSubcategoryName]), CALCULATE([Fact Revenue]), DESC), "@pct", DIVIDE(CALCULATE([Fact Revenue]), _current)), "<li><span class='bn'>" & DimProductSubcategory[EnglishProductSubcategoryName] & "</span><span class='bp'>" & FORMAT([@pct], "0.0%") & "</span></li>", "", [@pct], DESC)
-			VAR _bulletHtml = "<div class='bt'>Top Subcategories by Revenue</div><ul>" & _topBullets & "</ul>"
 			RETURN
 			    SVG.HtmlCard(
 			        "$" & FORMAT(_current, "#,##0"),
@@ -955,8 +940,7 @@ VAR _bulletHtml = "<div class='bt'>Top Customers by Revenue</div><ul>" & _topBul
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
 			        "Total Revenue",
 			        _subtitle,
-			        "revenue",
-			        _bulletHtml
+			        "revenue"
 			    )
 		formatString: @
 		displayFolder: Fact HTML Cards
@@ -969,8 +953,6 @@ VAR _bulletHtml = "<div class='bt'>Top Customers by Revenue</div><ul>" & _topBul
 			VAR _py = [Fact Orders PY]
 			VAR _yoyPct = [Fact Orders YOY %]
 			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
-			VAR _topBullets = CONCATENATEX(ADDCOLUMNS(TOPN(3, VALUES(DimProductSubcategory[EnglishProductSubcategoryName]), CALCULATE([Fact Orders]), DESC), "@pct", DIVIDE(CALCULATE([Fact Orders]), _current)), "<li><span class='bn'>" & DimProductSubcategory[EnglishProductSubcategoryName] & "</span><span class='bp'>" & FORMAT([@pct], "0.0%") & "</span></li>", "", [@pct], DESC)
-			VAR _bulletHtml = "<div class='bt'>Top Subcategories by Orders</div><ul>" & _topBullets & "</ul>"
 			RETURN
 			    SVG.HtmlCard(
 			        FORMAT(_current, "#,##0"),
@@ -978,8 +960,7 @@ VAR _bulletHtml = "<div class='bt'>Top Customers by Revenue</div><ul>" & _topBul
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
 			        "Total Orders",
 			        _subtitle,
-			        "orders",
-			        _bulletHtml
+			        "orders"
 			    )
 		formatString: @
 		displayFolder: Fact HTML Cards
@@ -992,8 +973,6 @@ VAR _bulletHtml = "<div class='bt'>Top Customers by Revenue</div><ul>" & _topBul
 			VAR _py = [Fact Profit PY]
 			VAR _yoyPct = [Fact Profit YOY %]
 			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
-			VAR _topBullets = CONCATENATEX(ADDCOLUMNS(TOPN(3, VALUES(DimProductSubcategory[EnglishProductSubcategoryName]), CALCULATE([Fact Profit]), DESC), "@pct", DIVIDE(CALCULATE([Fact Profit]), _current)), "<li><span class='bn'>" & DimProductSubcategory[EnglishProductSubcategoryName] & "</span><span class='bp'>" & FORMAT([@pct], "0.0%") & "</span></li>", "", [@pct], DESC)
-			VAR _bulletHtml = "<div class='bt'>Top Subcategories by Profit</div><ul>" & _topBullets & "</ul>"
 			RETURN
 			    SVG.HtmlCard(
 			        "$" & FORMAT(_current, "#,##0"),
@@ -1001,8 +980,7 @@ VAR _bulletHtml = "<div class='bt'>Top Customers by Revenue</div><ul>" & _topBul
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
 			        "Total Profit",
 			        _subtitle,
-			        "profit",
-			        _bulletHtml
+			        "profit"
 			    )
 		formatString: @
 		displayFolder: Fact HTML Cards
@@ -1021,10 +999,6 @@ VAR _bulletHtml = "<div class='bt'>Top Customers by Revenue</div><ul>" & _topBul
 			VAR _currentFmt = SWITCH(_selected, "Orders", FORMAT(_current, "#,##0"), "$" & FORMAT(_current, "#,##0"))
 			VAR _pyFmt = SWITCH(_selected, "Orders", FORMAT(_py, "#,##0"), "$" & FORMAT(_py, "#,##0"))
 			VAR _sel = SELECTEDVALUE('Fact Metric Selector'[Metric], "Revenue")
-			VAR _totalSel = IF(_sel = "Orders", [Fact Orders], IF(_sel = "Profit", [Fact Profit], [Fact Revenue]))
-			VAR _topBullets = CONCATENATEX(ADDCOLUMNS(TOPN(3, VALUES(DimProductSubcategory[EnglishProductSubcategoryName]), IF(_sel = "Orders", CALCULATE([Fact Orders]), IF(_sel = "Profit", CALCULATE([Fact Profit]), CALCULATE([Fact Revenue]))), DESC), "@pct", DIVIDE(IF(_sel = "Orders", CALCULATE([Fact Orders]), IF(_sel = "Profit", CALCULATE([Fact Profit]), CALCULATE([Fact Revenue]))), _totalSel)), "<li><span class='bn'>" & DimProductSubcategory[EnglishProductSubcategoryName] & "</span><span class='bp'>" & FORMAT([@pct], "0.0%") & "</span></li>", "", [@pct], DESC)
-VAR _bulletTitle = "Top Subcategories by " & IF(_sel = "Orders", "Orders", IF(_sel = "Profit", "Profit", "Revenue"))
-VAR _bulletHtml = "<div class='bt'>" & _bulletTitle & "</div><ul>" & _topBullets & "</ul>"
 			RETURN
 			    SVG.HtmlCard(
 			        _currentFmt,
@@ -1032,8 +1006,7 @@ VAR _bulletHtml = "<div class='bt'>" & _bulletTitle & "</div><ul>" & _topBullets
 			        FORMAT(_yoyPct, "+0.0%;-0.0%;0.0%"),
 			        _title,
 			        _subtitle,
-			        _icon,
-			        _bulletHtml
+			        _icon
 			    )
 		formatString: @
 		displayFolder: Fact HTML Cards
@@ -1046,8 +1019,6 @@ VAR _bulletHtml = "<div class='bt'>" & _bulletTitle & "</div><ul>" & _topBullets
 			VAR _py = [Fact Gross Margin % PY]
 			VAR _yoyAbs = _current - _py
 			VAR _subtitle = "Year " & COALESCE(FORMAT(SELECTEDVALUE(DimDate[CalendarYear]), "0"), "YTD")
-			VAR _topBullets = CONCATENATEX(ADDCOLUMNS(TOPN(3, VALUES(DimProductSubcategory[EnglishProductSubcategoryName]), CALCULATE([Fact Profit]), DESC), "@pct", DIVIDE(CALCULATE([Fact Profit]), _current)), "<li><span class='bn'>" & DimProductSubcategory[EnglishProductSubcategoryName] & "</span><span class='bp'>" & FORMAT([@pct], "0.0%") & "</span></li>", "", [@pct], DESC)
-			VAR _bulletHtml = "<div class='bt'>Top Subcategories by Profit</div><ul>" & _topBullets & "</ul>"
 			RETURN
 			    SVG.HtmlCard(
 			        FORMAT(_current, "+0.0%;-0.0%;0.0%"),
@@ -1055,8 +1026,7 @@ VAR _bulletHtml = "<div class='bt'>" & _bulletTitle & "</div><ul>" & _topBullets
 			        FORMAT(_yoyAbs, "+0.0pp;-0.0pp;0.0pp"),
 			        "Profit Margin",
 			        _subtitle,
-			        "margin",
-			        _bulletHtml
+			        "margin"
 			    )
 		formatString: @
 		displayFolder: Fact HTML Cards

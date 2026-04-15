@@ -1608,8 +1608,7 @@ function 'SVG.HtmlCard' =
 		    yoyPercentFmt: STRING VAL,
 		    subtitle: STRING VAL,
 		    title: STRING VAL,
-		    iconType: STRING VAL,
-		    bulletHtml: STRING VAL
+		    iconType: STRING VAL
 		) =>
 		// ── Configuration ───────────────────────────────────────────────────────
 		VAR _w = "380"
@@ -1662,13 +1661,7 @@ function 'SVG.HtmlCard' =
 		    ".pg-f {position:absolute;top:0;left:0;height:100%;border-radius:4px;background:" & _progColor & "} " &
 		    ".pg-th {position:absolute;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;" &
 		        "border-radius:50%;background:" & _progColor & ";border:3px solid white;box-shadow:0 1px 4px rgba(0,0,0,.25)} " &
-		    ".pg-lbl {font-size:10px;color:#444648;line-height:1.5;margin-top:5px;margin-bottom:8px} " &
-		    ".bul {border-top:1px dashed #e2e8f0;padding-top:8px;flex:1} " &
-		    ".bul ul {list-style:none;padding:0;margin:0} " &
-						".bt {font-size:10px;font-weight:700;color:#444648;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:5px} " &
-		    ".bul li {font-size:11px;padding:3px 0;display:flex;justify-content:space-between;align-items:center} " &
-		    ".bn {color:#444648;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} " &
-		    ".bp {font-weight:700;color:#FF6600;margin-left:8px;flex-shrink:0}"
+		    ".pg-lbl {font-size:10px;color:#444648;line-height:1.5;margin-top:5px;margin-bottom:8px}"
 		// ── HTML body ────────────────────────────────────────────────────────
 		VAR _html =
 		    "<html xmlns='http://www.w3.org/1999/xhtml'><head><style>" & _css & "</style></head>" &
@@ -1683,7 +1676,6 @@ function 'SVG.HtmlCard' =
 		            "<div class='pg-th' style='left:" & _progWidth & "%'></div>" &
 		        "</div></div>" &
 		        "<div class='pg-lbl'>" & _pgLabel & "</div>" &
-		        "<div class='bul'>" & bulletHtml & "</div>" &
 		    "</div></body></html>"
 		// ── Wrap in SVG foreignObject data URI ───────────────────────────────
 		VAR _svg =
