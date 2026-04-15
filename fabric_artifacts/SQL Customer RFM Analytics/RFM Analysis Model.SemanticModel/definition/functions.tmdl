@@ -1268,6 +1268,154 @@ function 'PowerofBI.IBCS.Waterfall.Vertical' =
 		    IF ( rowSignColumn IN { "+", "-", "=" }, _SVG )
 	lineageTag: 79a84bb8-3780-4114-9ab4-05f75923dada
 
+/// Self-contained IBCS column chart SVG. Three panels per month: (1) solid black AC column
+/// with grey dashed PY reference line; (2) ΔPY absolute variance bars (green = favorable,
+/// red = unfavorable); (3) ΔPY% pin chart. Renders all ALLSELECTED periods in one SVG —
+/// place as a single image visual, not in a matrix.
+function 'PowerofBI.IBCS.ColumnChart.Stacked' =
+		(
+		    // AC (current year) measure — e.g. [Fact Selected Metric]
+		    acMeasure: SCALAR EXPR,
+		    // PY (prior year) measure — e.g. [Fact Selected Metric PY]
+		    pyMeasure: SCALAR EXPR,
+		    // X-axis period label column — e.g. DimDate[MonthInitial]
+		    periodColumn: ANYREF EXPR,
+		    // Numeric sort column for chronological ordering — e.g. DimDate[MonthInitialIndex]
+		    sortColumn: ANYREF EXPR,
+		    // 1 = higher AC is favorable (sales), -1 = lower is favorable (cost)
+		    businessImpact: INT64 VAL
+		) =>
+		//=============================================================================
+		// PowerofBI.IBCS.ColumnChart.Stacked
+		// Self-contained IBCS column chart with AC/PY + ΔPY + ΔPY% panels.
+		// One solid black column (AC) + grey dashed PY reference line per month.
+		//=============================================================================
+
+		//--- Colors (IBCS standard)
+		VAR _cAC    = "#404040"
+		VAR _cPY    = "#C6C6C6"
+		VAR _cGreen = "#08787D"
+		VAR _cRed   = "#E24B20"
+		VAR _cText  = "#444444"
+		VAR _cLine  = "#DDDDDD"
+		VAR _cZero  = "#AAAAAA"
+
+		//--- Font & column geometry
+		VAR _fs   = 8
+		VAR _em   = _fs * 4 / 3
+		VAR _colW = 28
+		VAR _gap  = 6
+		VAR _catW = _colW + _gap
+
+		//--- Panel heights
+		VAR _hdrH   = _em * 1.5
+		VAR _colH   = 165
+		VAR _divH   = 4
+		VAR _absH   = 48
+		VAR _pctH   = 48
+		VAR _ftrH   = _em * 2
+		VAR _svgH   = _hdrH + _colH + _divH + _absH + _divH + _pctH + _ftrH
+
+		//--- Period setup
+		VAR _Periods = ALLSELECTED ( periodColumn )
+		VAR _PCount  = COUNTROWS ( _Periods )
+		VAR _svgW    = _PCount * _catW + _gap
+
+		//--- Per-period data table
+		VAR _D =
+		    ADDCOLUMNS (
+		        _Periods,
+		        "@AC",   CALCULATE ( acMeasure ),
+		        "@PY",   CALCULATE ( pyMeasure ),
+		        "@Lbl",  CALCULATE ( SELECTEDVALUE ( periodColumn ) ),
+		        "@Sort", CALCULATE ( MIN ( sortColumn ) )
+		    )
+
+		//--- Global scale maximums
+		VAR _MaxVal    = MAX ( MAXX ( _D, [@AC] ), MAXX ( _D, [@PY] ) )
+		VAR _MaxAbsVar = MAXX ( _D, ABS ( [@AC] - [@PY] ) )
+		VAR _MaxAbsPct = MAXX ( _D, ABS ( DIVIDE ( [@AC] - [@PY], ABS ( [@PY] ) ) ) )
+
+		//--- Y anchors (panel boundaries)
+		VAR _y1      = _hdrH + _colH
+		VAR _y2      = _y1 + _divH
+		VAR _yAbsMid = _y2 + _absH / 2
+		VAR _y3      = _y2 + _absH
+		VAR _y4      = _y3 + _divH
+		VAR _yPctMid = _y4 + _pctH / 2
+		VAR _y5      = _y4 + _pctH
+
+		//--- Panel header labels
+		VAR _lblAC  = "<text x='2' y='" & ( _hdrH - _em * 0.4 ) & "' font-size='" & ( _fs - 1 ) & "pt' fill='" & _cText & "' opacity='0.7'>AC / PY</text>"
+		VAR _lblDPY = "<text x='2' y='" & ( _y2 + _em * 0.7 ) & "' font-size='" & ( _fs - 1 ) & "pt' fill='" & _cText & "' opacity='0.7'>&#916;PY</text>"
+		VAR _lblPct = "<text x='2' y='" & ( _y4 + _em * 0.7 ) & "' font-size='" & ( _fs - 1 ) & "pt' fill='" & _cText & "' opacity='0.7'>&#916;PY%</text>"
+
+		//--- Horizontal dividers and zero reference lines
+		VAR _div1 = "<line x1='0' y1='" & _y2 & "' x2='" & _svgW & "' y2='" & _y2 & "' stroke='" & _cLine & "' stroke-width='1'/>"
+		VAR _div2 = "<line x1='0' y1='" & _y4 & "' x2='" & _svgW & "' y2='" & _y4 & "' stroke='" & _cLine & "' stroke-width='1'/>"
+		VAR _zAbs = "<line x1='0' y1='" & _yAbsMid & "' x2='" & _svgW & "' y2='" & _yAbsMid & "' stroke='" & _cZero & "' stroke-width='0.5'/>"
+		VAR _zPct = "<line x1='0' y1='" & _yPctMid & "' x2='" & _svgW & "' y2='" & _yPctMid & "' stroke='" & _cZero & "' stroke-width='0.5'/>"
+
+		//--- Rank periods chronologically
+		VAR _DR =
+		    ADDCOLUMNS (
+		        _D,
+		        "@Rank", RANKX ( _D, [@Sort],, ASC, Dense )
+		    )
+
+		//--- Build per-column SVG elements
+		VAR _Cols =
+		    CONCATENATEX (
+		        _DR,
+		        VAR _i   = [@Rank]
+		        VAR _x   = ( _i - 1 ) * _catW + _gap
+		        VAR _cx  = _x + _colW / 2
+		        VAR _ac  = [@AC]
+		        VAR _py  = [@PY]
+		        VAR _lbl = [@Lbl]
+		        // Pixel heights proportional to global max
+		        VAR _hAC = IF ( _MaxVal > 0, DIVIDE ( _ac, _MaxVal ) * _colH, 0 )
+		        VAR _hPY = IF ( _MaxVal > 0, DIVIDE ( _py, _MaxVal ) * _colH, 0 )
+		        // Y positions from bottom of column panel
+		        VAR _yAC = _y1 - _hAC
+		        VAR _yPY = _y1 - _hPY
+		        // Solid black AC column
+		        VAR _rAC = IF ( _hAC > 0.5, "<rect x='" & _x & "' y='" & _yAC & "' width='" & _colW & "' height='" & _hAC & "' fill='" & _cAC & "'/>", "" )
+		        // Grey dashed PY reference line
+		        VAR _rPY = IF ( NOT ISBLANK ( _py ), "<line x1='" & _x & "' y1='" & _yPY & "' x2='" & ( _x + _colW ) & "' y2='" & _yPY & "' stroke='" & _cPY & "' stroke-width='2' stroke-dasharray='3,2'/>", "" )
+		        // ΔPY absolute variance bar
+		        VAR _dv  = _ac - _py
+		        VAR _vc  = IF ( _dv * businessImpact >= 0, _cGreen, _cRed )
+		        VAR _bw  = _colW * 0.55
+		        VAR _bx  = _x + ( _colW - _bw ) / 2
+		        VAR _hDv = IF ( _MaxAbsVar > 0, ABS ( _dv ) / _MaxAbsVar * ( _absH / 2 - 3 ), 0 )
+		        VAR _rDv = IF ( NOT ISBLANK ( _dv ) && _MaxAbsVar > 0, "<rect x='" & _bx & "' y='" & IF ( _dv >= 0, _yAbsMid - _hDv, _yAbsMid ) & "' width='" & _bw & "' height='" & _hDv & "' fill='" & _vc & "'/>", "" )
+		        // ΔPY% pin chart
+		        VAR _pct  = DIVIDE ( _dv, ABS ( _py ) )
+		        VAR _hPct = IF ( _MaxAbsPct > 0, ABS ( _pct ) / _MaxAbsPct * ( _pctH / 2 - 4 ), 0 )
+		        VAR _pyY  = IF ( _pct >= 0, _yPctMid - _hPct, _yPctMid + _hPct )
+		        VAR _rPct = IF ( NOT ISBLANK ( _pct ) && _MaxAbsPct > 0, "<line x1='" & _cx & "' y1='" & _yPctMid & "' x2='" & _cx & "' y2='" & _pyY & "' stroke='" & _vc & "' stroke-width='2'/><circle cx='" & _cx & "' cy='" & _pyY & "' r='3' fill='" & _vc & "'/>", "" )
+		        // Period label
+		        VAR _rLbl = "<text text-anchor='middle' x='" & _cx & "' y='" & ( _y5 + _em * 0.8 ) & "' fill='" & _cText & "'>" & _lbl & "</text>"
+		        RETURN
+		            _rAC & _rPY & _rDv & _rPct & _rLbl,
+		        "",
+		        [@Rank]
+		    )
+
+		//--- Assemble final SVG
+		VAR _SVG =
+		    "data:image/svg+xml;utf8," &
+		    "<svg xmlns='http://www.w3.org/2000/svg' width='" & _svgW & "' height='" & _svgH & "'>" &
+		    "<style><![CDATA[text{font-family:'Segoe UI',sans-serif;font-size:" & _fs & "pt;dominant-baseline:central;}]]></style>" &
+		    _lblAC & _lblDPY & _lblPct &
+		    _Cols &
+		    _div1 & _div2 & _zAbs & _zPct &
+		    "</svg>"
+		RETURN
+		    IF ( _PCount > 0, _SVG )
+	lineageTag: c8f3a5d2-b1e7-4692-a045-8f6d2c1b3e90
+
 /// ════════════════════════════════════════════════════════════════════════════
 /// SVG KPI Card Library - Following DaxLib.SVG patterns
 /// ════════════════════════════════════════════════════════════════════════════

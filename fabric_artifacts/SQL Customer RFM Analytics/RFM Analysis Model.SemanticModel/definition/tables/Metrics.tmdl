@@ -719,16 +719,16 @@ table Metrics
 		lineageTag: 2f0203ee-98d1-40bc-bc47-af97efa6c2c7
 		dataCategory: ImageUrl
 
-	/// IBCS stacked column chart showing Champions/VIPs/Loyalists/At Risk segment contributions per period. Place DimDate[FullDateAlternateKey] in matrix columns. Set visual image size in Format pane. Use Segment Slicer to highlight a segment.
+	/// IBCS stacked column chart: Champions/VIPs/Loyalists/At Risk AC stacks + PY dashed reference line per
+	/// month, plus ΔPY absolute variance bars and ΔPY% pin chart panels. All ALLSELECTED months rendered in
+	/// one self-contained SVG. Place as a single image visual (not in a matrix). DataCategory = ImageUrl.
 	measure 'IBCS Segment Stacked' =
-			
 			PowerofBI.IBCS.ColumnChart.Stacked(
-			    [IS Metric by Segment],
-			    FactCustomerRFM[Segment],
-			    'Segment Slicer'[Segment],
-			    DimDate[FullDateAlternateKey],
-			    0,
-			    0
+			    [Fact Selected Metric],
+			    [Fact Selected Metric PY],
+			    DimDate[MonthInitial],
+			    DimDate[MonthInitialIndex],
+			    1
 			)
 		formatString: @
 		displayFolder: SVG Visuals
