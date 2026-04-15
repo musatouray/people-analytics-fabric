@@ -3,10 +3,10 @@
   "name": "241ddea308bc84ee8c1e",
   "position": {
     "x": 339.23784317995279,
-    "y": 61.363841940401009,
+    "y": 69.468500309887943,
     "z": 6002,
-    "height": 288.29427628603491,
-    "width": 1531.7804318330291,
+    "height": 284.82085127054057,
+    "width": 1513.255498417059,
     "tabOrder": 6002
   },
   "visual": {
@@ -103,10 +103,10 @@
                     "Entity": "Metrics"
                   }
                 },
-                "Property": "HTML Card Fact Gross Margin"
+                "Property": "HTML Card Fact Revenue"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ]
       }
@@ -118,14 +118,14 @@
             "imageHeight": {
               "expr": {
                 "Literal": {
-                  "Value": "250D"
+                  "Value": "230D"
                 }
               }
             },
             "imageWidth": {
               "expr": {
                 "Literal": {
-                  "Value": "360D"
+                  "Value": "340D"
                 }
               }
             }
